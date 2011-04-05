@@ -1,0 +1,27 @@
+<h1>Listing competitors</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Contactemail</th>
+    <th>Contactphone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @competitors.each do |competitor| %>
+  <tr>
+    <td><%= competitor.name %></td>
+    <td><%= competitor.contactemail %></td>
+    <td><%= competitor.contactphone %></td>
+    <td><%= link_to 'Show', competitor %></td>
+    <td><%= link_to 'Edit', edit_competitor_path(competitor) %></td>
+    <td><%= link_to 'Destroy', competitor, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Competitor', new_competitor_path %>

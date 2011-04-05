@@ -1,0 +1,12 @@
+<%= form_for @team do |person_form| %>
+  <%= team_form.text_field :school %>
+  <%= team_form.text_field :amtaid %>
+  <%= team_form.text_field :teamabcd %>
+  <%= team_form.text_field :contactemail %>
+  <%= team_form.text_field :contactphone %>
+  <% for address in @person.addresses %>
+    <%= person_form.fields_for competitor, :index => competitor do |competitor_form|%>
+      <%= competitor_form.text_field :name %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,42 @@
+<%= form_tag(:action => "create") do %>
+    #add error processing
+  <div class="field">
+    <%= label :amtaid, "AMTA Team Number" %><br />
+    <%= text_field(:team, :amtaid) %>
+  </div>
+  <div class="field">
+    <%= label :amtaid, "School name" %><br />
+    <%= text_field(:team, :school) %>
+  </div>
+  <div class="field">
+    <%= label :amtaid, "A, B, C or D team?" %><br />
+    <%= text_field(:team, :teamabcd)
+     %>
+  </div>
+  <div class="field">
+    <%= label :amtaid, "Team contact email" %><br />
+    <%= text_field(:team, :contactemail)
+     %>
+  </div>
+  <div class="field">
+    <%= label :amtaid, "Team contact phone" %><br />
+    <%= text_field(:team, :contactphone) %>
+  </div>
+    #players
+  <div class="field">
+    <%= label :name, "Competitor Name" %><br />
+    <%= text_field(:competitor[], :name) %>
+  </div>
+  <div class="field">
+    <%= label :name, "Competitor Name" %><br />
+    <%= text_field(:competitor[], :name) %>
+  </div>
+  <div class="field">
+    <%= label :name, "Competitor Name" %><br />
+    <%= text_field(:competitor[], :name) %>
+  </div>
+  <div class="actions">
+     <%= submit_tag( "Create" )%>
+  </div>
+<% end %>
+

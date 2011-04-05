@@ -1,0 +1,32 @@
+<%= form_for @team do |team_form| %>
+    <div>
+    <%= label :school, "School" %><br />
+    <%= team_form.text_field :school %>
+    </div>
+    <div>
+    <%= label :amtaid, "AMTA Team Number" %><br />
+    <%= team_form.text_field :amtaid %>
+    </div>
+    <div>
+    <%= label :teamabcd, "Team A B C D" %><br />
+    <%= team_form.text_field :teamabcd %>
+    </div>
+    <div>
+    <%= label :contactemail, "Contact Email" %><br />
+    <%= team_form.text_field :contactemail %>
+    </div>
+    <div>
+    <%= label :contactphone, "Contact Phone" %><br />
+    <%= team_form.text_field :contactphone %>
+    </div>
+    <% (1..6).each do |i| %>
+        <div>
+        <%= label :name, "Competitor name" %>
+        <input name="competitors[][name]" type="text"/><br />
+        </div>
+    <% end %>
+
+    <div class="actions">
+       <%= submit_tag( "Create" )%>
+    </div>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amtaid: 1
+  school: MyString
+  teamabcd: MyString
+  contactemail: MyString
+  contactphone: MyString
+
+two:
+  amtaid: 1
+  school: MyString
+  teamabcd: MyString
+  contactemail: MyString
+  contactphone: MyString

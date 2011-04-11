@@ -14,6 +14,15 @@
   <b>Contactphone:</b>
   <%= @competitor.contactphone %>
 </p>
+<p>
+    <b>Team ID:</b>
+    <%= @competitor.team_id %>
+</p>
+<p>
+    <b>Team Name:</b>
+    <% @team = Team.find(@competitor.team_id) %>
+    <%= @team.school + " " + @team.teamabcd %>
+</p>
 
 
 <%= link_to 'Edit', edit_competitor_path(@competitor) %> |

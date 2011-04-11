@@ -5,6 +5,8 @@
     <th>Name</th>
     <th>Contactemail</th>
     <th>Contactphone</th>
+    <th>Team ID</th>
+    <th>Team Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +17,13 @@
     <td><%= competitor.name %></td>
     <td><%= competitor.contactemail %></td>
     <td><%= competitor.contactphone %></td>
+    <td><%= competitor.team_id %></td>
+    <% begin %>
+        <% @team = Team.find(competitor.team_id) %>
+        <td><%= @team.school + " " + @team.teamabcd %></td>
+    <% rescue %>
+        <%= puts "error" %>
+    <% end %>
     <td><%= link_to 'Show', competitor %></td>
     <td><%= link_to 'Edit', edit_competitor_path(competitor) %></td>
     <td><%= link_to 'Destroy', competitor, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -43,8 +43,6 @@ class TeamsController < ApplicationController
     #create competitors too
     @team = Team.new(params[:team])
     competitor = params[:competitors]
-    competitor["team_id"] = Integer(@team.id)
-    #make this a list in a minute.
     @team.competitors.build(competitor)
 
     respond_to do |format|

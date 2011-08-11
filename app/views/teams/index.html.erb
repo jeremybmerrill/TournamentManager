@@ -2,24 +2,21 @@
 
 <table>
   <tr>
-    <th>Amtaid</th>
-    <th>School</th>
-    <th>Teamabcd</th>
-    <th>Contactemail</th>
-    <th>Contactphone</th>
-    <th></th>
+    <th>Team Name</th>
+    <th>AMTA Team Num.</th>
+    <th>Contact Email</th>
+    <th>Contact Phone</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @teams.each do |team| %>
   <tr>
-    <td><%= team.amtaid %></td>
-    <td><%= team.school %></td>
-    <td><%= team.teamabcd %></td>
+    <td><%= link_to team do %><%= team.school %> <%= team.teamabcd %><% end %></td>
+    <td> <%= team.amtaid %> </td>
     <td><%= team.contactemail %></td>
     <td><%= team.contactphone %></td>
-    <td><%= link_to 'Show', team %></td>
+    <% #Show these only on proper auth. %>
     <td><%= link_to 'Edit', edit_team_path(team) %></td>
     <td><%= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

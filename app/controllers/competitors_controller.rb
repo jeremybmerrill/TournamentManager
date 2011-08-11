@@ -41,7 +41,7 @@ class CompetitorsController < ApplicationController
   # POST /competitors.xml
   def create
     @competitor = Competitor.new(params[:competitor])
-
+    
     respond_to do |format|
       if @competitor.save
         format.html { redirect_to(@competitor, :notice => 'Competitor was successfully created.') }

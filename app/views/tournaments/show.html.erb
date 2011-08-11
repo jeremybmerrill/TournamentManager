@@ -1,20 +1,37 @@
+
+<h1><%= @tournament.title %></h1>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @tournament.title %>
-</p>
-
-<p>
-  <b>Date:</b>
+  <span class="identifier" id="date">Date:</span>
   <%= @tournament.date %>
 </p>
 
 <p>
-  <b>Location:</b>
-  <%= @tournament.location %>
+  Hosted by <span id="host"><%= @tournament.host %></span> at <span id="location"><a href="http://maps.google.com/?<%= @tournament.location %>"><%= @tournament.location %></a></span>
+</p>
+<p>
+  <span class="identifier" id="type">Type:</span>
+  <%= @tournament.num_rounds %>-round <%= @tournament.type %> tournament
+</p>
+<p id="info">
+  <%= @tournament.info %>
+</p>
+<p>
+  <span class="identifier" id="teams">Teams:</span>
+  <ul>
+  <% @teams = @tournament.teams %>
+  <% @teams.each do |team| %>
+    <li>
+      <%= link_to(team) do %>
+        <%= team.school %> <%= team.teamabcd %>
+      <% end %>
+    </li>
+  <% end %>
+  <li id="new_team"><%= link_to 'New Team', new_team_path %></li>
+  </ul>
 </p>
 
 
-<%= link_to 'Edit', edit_tournament_path(@tournament) %> |
-<%= link_to 'Back', tournaments_path %>
+<%= link_to 'Edit', edit_tournament_path(@tournament) %>
+

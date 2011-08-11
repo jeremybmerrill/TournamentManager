@@ -20,8 +20,27 @@
     <%= f.text_field :date %>
   </div>
   <div class="field">
+    <%= f.label :host %><br />
+    <%= f.text_field :host %>
+    <span class="example">e.g. Claremont McKenna College</span>
+  </div>
+  <div class="field">
     <%= f.label :location %><br />
     <%= f.text_field :location %>
+    <span class="example">e.g. Merrill Hall</span>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.select(:type, options_for_select([['AMTA', 'AMTA'], ['WTFA', 'WTFA'], ['OMGP', 'OMGP']])) %>
+  </div>
+  <div class="field">
+    <%= f.label :rounds %><br />
+    <%= f.select(:rounds, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],])) %>
+  </div>
+  <div class="field">
+    <%= f.label :info %><br />
+    <%= f.text_field :info %>
+    <span class="example">All the useful information you can think of! Quick and tasty lunch spots, parking info, any special competitive rules...</span>
   </div>
   <div class="actions">
     <%= f.submit %>

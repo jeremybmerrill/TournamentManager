@@ -1,29 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <span class="identifier" id="name">Name:</span>
   <%= @competitor.name %>
 </p>
 
 <p>
-  <b>Contactemail:</b>
+  <span class="identifier" id="email">Email:</span>
   <%= @competitor.contactemail %>
 </p>
 
 <p>
-  <b>Contactphone:</b>
+  <b>Phone:</b>
   <%= @competitor.contactphone %>
 </p>
 <p>
-    <b>Team ID:</b>
-    <%= @competitor.team_id %>
-</p>
-<p>
-    <b>Team Name:</b>
+    <span class="identifier" id="team_name">Team Name:</span>
     <% @team = Team.find(@competitor.team_id) %>
-    <%= @team.school + " " + @team.teamabcd %>
+    <%= link_to(@team) do %>
+        <%= @team.school + " " + @team.teamabcd %>
+    <% end %>
 </p>
 
 
 <%= link_to 'Edit', edit_competitor_path(@competitor) %> |
-<%= link_to 'Back', competitors_path %>

@@ -15,12 +15,21 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="field>
+    <%= f.label :team_id, "Team" %><br />
+    <% team_id = params[:team_id] %>
+    <% team_select = [['','']] %>
+    <% Team.all.each do |t| %>
+    <%    team_select << [t.school + " " + t.teamabcd, t.id] %>
+    <% end %>
+    <%= f.select(:team_id, options_for_select(team_select, team_id)) %>
+  </div>
   <div class="field">
-    <%= f.label :contactemail %><br />
+    <%= f.label(:contactemail, "Email (Optional)") %><br />
     <%= f.text_field :contactemail %>
   </div>
   <div class="field">
-    <%= f.label :contactphone %><br />
+    <%= f.label(:contactphone, "Phone (Optional)")%><br />
     <%= f.text_field :contactphone %>
   </div>
   <div class="actions">

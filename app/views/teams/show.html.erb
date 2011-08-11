@@ -1,63 +1,88 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @team.school %> <%= @team.teamabcd %> </h1>
+
 <p>
-  <b>Amtaid:</b>
+  <span class="identifier" id="id">Amtaid:</span>
   <%= @team.amtaid %>
 </p>
 
 <p>
-  <b>School:</b>
-  <%= @team.school %>
-</p>
-
-<p>
-  <b>Teamabcd:</b>
-  <%= @team.teamabcd %>
-</p>
-
-<p>
-  <b>Contactemail:</b>
+  <span class="identifier" id="email">Contact Email:</span>
   <%= @team.contactemail %>
 </p>
 
 <p>
-  <b>Contactphone:</b>
+  <span class="identifier" id="phone">Contact Phone:</span>
   <%= @team.contactphone %>
 </p>
 <p>
-    <b>Competitors</b>
+  <span class="identifier" id="upcoming_tournaments">Upcoming Tournaments</span>
+  <% @tournaments = @team.tournaments %>
+  <% @tournaments.each do |tournament| %>
+    <% if tournament.date != 0 #TODO: make this actually aware of dates.%> 
+      <li>
+      <%= link_to (tournament) do %>
+        <%= tournament.title%>
+      <% end %>
+        &nbsp;on <%= tournament.date %>
+      </li>
+    <% end %>
+  <% end %>
+  
+</p>
+<p>
+    <span class="identifier" id="competitors">Competitors</span>
         <table>
           <tr>
             <th>Name</th>
-            <th>Contactemail</th>
-            <th>Contactphone</th>
-            <th>Team ID</th>
+            <th>Email</th>
+            <th>Phone</th>
             <th>Team Name</th>
-            <th></th>
             <th></th>
             <th></th>
           </tr>
     <% #FIXME use a partial to render these, later %>
         <% @team.competitors.each do |competitor| %>
           <tr>
-            <td><%= competitor.name %></td>
+            <td><%= link_to (competitor) do %>
+              <%= competitor.name %>
+              <%  end 
+              %>
+            </td>
             <td><%= competitor.contactemail %></td>
             <td><%= competitor.contactphone %></td>
-            <td><%= competitor.team_id %></td>
             <% begin %>
                 <% @team = Team.find(competitor.team_id) %>
                 <td><%= @team.school + " " + @team.teamabcd %></td>
             <% rescue %>
                 <%= puts "error" %>
             <% end %>
-            <td><%= link_to 'Show', competitor %></td>
+            <td></td>
+            <% #TODO: Auth: if logged in as a couch. %>
             <td><%= link_to 'Edit', edit_competitor_path(competitor) %></td>
             <td><%= link_to 'Destroy', competitor, :confirm => 'Are you sure?', :method => :delete %></td>
           </tr>
         <% end %>
+        <tr>
+            <td id="new_competitor"><%= link_to 'New Competitor', new_competitor_path %></td>
+        </tr>
         </table>
+</p>
+<p>
+  <span class="identifier" id="past_tournaments">Past Tournaments:</span>
+    <% #TODO: change this for the many-to-many model; put an "each" loop here %>
+  <% @tournament = Tournament.find(@team.tournament_id) %>
 
-        
+  <% if @tournament.date == 0 #TODO: make this actually aware of dates.%> 
+    <li>
+    <%= link_to (@tournament) do %>
+      <%= @tournament.title %>
+    <% end %>
+      on <%= @tournament.date %>
+    </li>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

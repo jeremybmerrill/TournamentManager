@@ -1,11 +1,15 @@
 TournamentManager::Application.routes.draw do
-  resources :competitors
+
+  resources :competitors 
 
   resources :teams
 
-  resources :tournaments
+  resources :tournaments do
+    resources :rounds
+    resources :amta_ballots
+  end
 
-  root :to => "home#index"
+  root :to => "tournaments#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

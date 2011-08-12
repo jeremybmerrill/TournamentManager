@@ -44,6 +44,7 @@ class TeamsController < ApplicationController
     @team = Team.new(params[:team])
     competitor = params[:competitors]
     @team.competitors.build(competitor)
+    @team.tournaments << Tournament.find(params[:tournament_id])
 
     respond_to do |format|
       if @team.save

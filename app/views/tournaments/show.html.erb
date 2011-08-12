@@ -28,7 +28,7 @@
       <% end %>
     </li>
   <% end %>
-  <li id="new_team"><%= link_to 'New Team', new_team_path %></li>
+  <li id="new_team"><%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id) %></li>
   </ul>
 </p>
 

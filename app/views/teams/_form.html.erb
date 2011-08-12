@@ -3,6 +3,9 @@
     <%= label :school, "School" %><br />
     <%= team_form.text_field :school %>
     </div>
+    <% if defined? :tournament_id %>
+      <%= hidden_field_tag(:tournament_id, params[:tournament_id]) %>
+    <% end %>
     <div>
     <%= label :amtaid, "AMTA Team Number" %><br />
     <%= team_form.text_field :amtaid %>

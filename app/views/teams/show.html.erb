@@ -65,22 +65,22 @@
           </tr>
         <% end %>
         <tr>
-            <td id="new_competitor"><%= link_to 'New Competitor', new_competitor_path %></td>
+            <td id="new_competitor"><%= link_to 'New Competitor', new_competitor_path( :team_id => @team.id) %></td>
         </tr>
         </table>
 </p>
 <p>
   <span class="identifier" id="past_tournaments">Past Tournaments:</span>
-    <% #TODO: change this for the many-to-many model; put an "each" loop here %>
-  <% @tournament = Tournament.find(@team.tournament_id) %>
-
-  <% if @tournament.date == 0 #TODO: make this actually aware of dates.%> 
-    <li>
-    <%= link_to (@tournament) do %>
-      <%= @tournament.title %>
+  <% @team.tournament_ids.each do |id| %>
+    <% @tournament = Tournament.find(id) %>
+    <% if @tournament.date == 0 #TODO: make this actually aware of dates.%> 
+      <li>
+      <%= link_to (@tournament) do %>
+        <%= @tournament.title %>
+      <% end %>
+        on <%= @tournament.date %>
+      </li>
     <% end %>
-      on <%= @tournament.date %>
-    </li>
   <% end %>
 </p>
 

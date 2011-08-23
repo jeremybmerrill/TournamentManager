@@ -10,10 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110811051703) do
+ActiveRecord::Schema.define(:version => 20110819204530) do
+
+  create_table "affs", :force => true do |t|
+    t.integer "team_id"
+    t.integer "pairing_id"
+  end
+
+  create_table "affs_pairings", :id => false, :force => true do |t|
+    t.integer "aff_id"
+    t.integer "pairing_id"
+  end
 
   create_table "amta_ballots", :force => true do |t|
-    t.integer  "round_id"
     t.integer  "p_open"
     t.integer  "d_open"
     t.integer  "p_witness_1"
@@ -46,6 +55,13 @@ ActiveRecord::Schema.define(:version => 20110811051703) do
     t.integer  "witness_rank_4"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "pairing_id"
+    t.integer  "p_witness_1_cx"
+    t.integer  "p_witness_2_cx"
+    t.integer  "p_witness_3_cx"
+    t.integer  "d_witness_1_cx"
+    t.integer  "d_witness_2_cx"
+    t.integer  "d_witness_3_cx"
   end
 
   create_table "competitors", :force => true do |t|
@@ -55,14 +71,48 @@ ActiveRecord::Schema.define(:version => 20110811051703) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "team_id"
+    t.boolean  "captain"
+  end
+
+  create_table "negs", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "pairing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "negs_pairings", :id => false, :force => true do |t|
+    t.integer "neg_id"
+    t.integer "pairing_id"
+  end
+
+  create_table "pairings", :force => true do |t|
+    t.integer  "round_id"
+    t.string   "room"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pairings_rounds", :id => false, :force => true do |t|
+    t.integer "pairing_id"
+    t.integer "round_id"
+  end
+
+  create_table "pairings_teams", :id => false, :force => true do |t|
+    t.integer "pairing_id"
+    t.integer "team_id"
+  end
+
+  create_table "pros", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "pairing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rounds", :force => true do |t|
-    t.integer  "tournament_id"
-    t.integer  "plaintiff_id"
-    t.integer  "defense_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "index"
+    t.integer "tournament_id"
   end
 
   create_table "teams", :force => true do |t|
@@ -82,15 +132,18 @@ ActiveRecord::Schema.define(:version => 20110811051703) do
 
   create_table "tournaments", :force => true do |t|
     t.string   "title"
-    t.string   "date"
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
+    t.string   "type_of_competition"
     t.integer  "number_of_rounds"
     t.text     "info"
     t.text     "host"
     t.integer  "num_rounds"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "rooms"
+    t.string   "pairing_log"
   end
 
 end

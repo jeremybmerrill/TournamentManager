@@ -5,9 +5,16 @@ TournamentManager::Application.routes.draw do
   resources :teams
 
   resources :tournaments do
-    resources :rounds
-    resources :amta_ballots
+    resources :rounds do
+      resources :pairings do
+        resources :amta_ballots
+      end
+      member do
+        get 'autopair'
+      end
+    end
   end
+
 
   root :to => "tournaments#index"
 

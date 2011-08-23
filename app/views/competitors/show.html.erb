@@ -4,6 +4,9 @@
   <span class="identifier" id="name">Name:</span>
   <%= @competitor.name %>
 </p>
+<% if @competitor.captain? %>
+  <p><b>Captain</b></p>
+<% end %>
 
 <p>
   <span class="identifier" id="email">Email:</span>
@@ -14,6 +17,7 @@
   <b>Phone:</b>
   <%= @competitor.contactphone %>
 </p>
+<% if @competitor.team_id %>
 <p>
     <span class="identifier" id="team_name">Team Name:</span>
     <% @team = Team.find(@competitor.team_id) %>
@@ -21,6 +25,7 @@
         <%= @team.school + " " + @team.teamabcd %>
     <% end %>
 </p>
+<% end %>
 
 
-<%= link_to 'Edit', edit_competitor_path(@competitor) %> |
+<%= link_to 'Edit', edit_competitor_path(@competitor) %>

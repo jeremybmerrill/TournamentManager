@@ -41,6 +41,9 @@ class TournamentsController < ApplicationController
   # POST /tournaments.xml
   def create
     @tournament = Tournament.new(params[:tournament])
+    (1..@tournament.num_rounds).each do |n|
+      @tournament.rounds.build(:index => n)
+    end
 
     respond_to do |format|
       if @tournament.save

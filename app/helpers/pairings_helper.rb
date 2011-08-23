@@ -1,0 +1,2 @@
+module PairingsHelper
+end

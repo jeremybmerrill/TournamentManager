@@ -1,0 +1,29 @@
+<%= form_for(@round) do |f| %>
+  <% if @round.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@round.errors.count, "error") %> prohibited this round from being saved:</h2>
+
+      <ul>
+      <% @round.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tournament_id %><br />
+    <%= f.text_field :tournament_id %>
+  </div>
+  <div class="field">
+    <%= f.label :plaintiff_id %><br />
+    <%= f.text_field :plaintiff_id %>
+  </div>
+  <div class="field">
+    <%= f.label :defense_id %><br />
+    <%= f.text_field :defense_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

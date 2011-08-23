@@ -1,0 +1,27 @@
+<h1>Listing amta_ballots</h1>
+
+<table>
+  <tr>
+    <th>Round</th>
+    <% tournament = Tournament.find(params[:tournament_id]) %>
+    <th><%= tournament.translate("AMTA", "aff") %></th>
+    <th><%= tournament.translate("AMTA", "neg") %></th>
+    <th></th>
+  </tr>
+
+<% @amta_ballots.each do |amta_ballot| %>
+  <% pairing = @amta_ballot.pairing %>
+  <% round = pairing.round %>
+  <% tournament = round.tournament %>
+  <tr>
+    <td><%= tournament.title + ": Round " + round.index %></td>
+    <td><%= link_to 'Show', tournament_amta_ballot_path(tournament, @amta_ballot) %></td>
+    <td><%= link_to 'Edit', edit_tournament_amta_ballot_path(amta_ballot) %></td>
+    <td><%= link_to 'Destroy', tournament_amta_ballot_path(tournament, @amta_ballot), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Amta ballot', new_tournament_amta_ballot_path(tournament, @amta_ballot) %>

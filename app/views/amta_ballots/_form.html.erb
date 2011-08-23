@@ -1,0 +1,206 @@
+<% tournament = Tournament.find(params[:tournament_id]) %>
+<% round = Round.find(params[:round_id]) %>
+<% pairing = Pairing.find(params[:pairing_id]) %>
+<%= form_for([tournament, round, pairing, @amta_ballot]) do |f| %>
+  <% if @amta_ballot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@amta_ballot.errors.count, "error") %> prohibited this amta_ballot from being saved:</h2>
+
+      <ul>
+      <% @amta_ballot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="holder" id="open" >
+    <div class="p field score">
+      <%= f.label :p_open %>
+      <%= f.text_field :p_open, :class => "p score" %>
+    </div>
+    <div class="d field score">
+      <%= f.label :d_open %>
+      <%= f.text_field :d_open, :class => "d score" %>
+    </div>
+  </div>
+
+  <div class="witness holder" id="witness_1" >
+    <div class="p field score">
+      <%= f.label :p_dx_1 %>
+      <%= f.text_field :p_dx_1, :class => "p score" %>
+    </div>
+    <div class="p field score witnessdx">
+      <%= f.label :p_witness_1 %>
+      <%= f.text_field :p_witness_1, :class => "p score" %>
+    </div>
+    <div class="p field score witnesscx">
+      <%= f.label :p_witness_1_cx %>
+      <%= f.text_field :p_witness_1_cx, :class => "p score" %>
+    </div>
+    <div class="d field score">
+      <%= f.label :d_cx_1 %>
+      <%= f.text_field :d_cx_1, :class => "d score" %>
+    </div>
+  </div>
+
+  <div class="witness holder" id="witness_2" >
+    <div class="p field score">
+      <%= f.label :p_dx_2 %>
+      <%= f.text_field :p_dx_2, :class => "p score" %>
+    </div>
+    <div class="p field score witnessdx">
+      <%= f.label :p_witness_2 %>
+      <%= f.text_field :p_witness_2, :class => "p score" %>
+    </div>
+    <div class="p field score witnesscx">
+      <%= f.label :p_witness_2_cx %>
+      <%= f.text_field :p_witness_2_cx, :class => "p score" %>
+    </div>
+    <div class="d field score">
+      <%= f.label :d_cx_2 %>
+      <%= f.text_field :d_cx_2, :class => "d score" %>
+    </div>
+  </div>
+
+  <div class="witness holder" id="witness_3" >
+    <div class="p field score dx">
+      <%= f.label :p_dx_3 %>
+      <%= f.text_field :p_dx_3, :class => "p score" %>
+    </div>
+    <div class="p field score witnessdx">
+      <%= f.label :p_witness_3 %>
+      <%= f.text_field :p_witness_3, :class => "p score" %>
+    </div>
+    <div class="p field score witnesscx">
+      <%= f.label :p_witness_3_cx %>
+      <%= f.text_field :p_witness_3_cx, :class => "p score" %>
+    </div>
+    <div class="d field score cx">
+      <%= f.label :d_cx_3 %>
+      <%= f.text_field :d_cx_3, :class => "d score" %>
+    </div>
+  </div>
+
+  <div class="witness holder" id="witness_4" >
+    <div class="d field score dx">
+      <%= f.label :d_dx_1 %>
+      <%= f.text_field :d_dx_1, :class => "d score" %>
+    </div>
+    <div class="d field score witnessdx">
+      <%= f.label :d_witness_1 %>
+      <%= f.text_field :d_witness_1, :class => "d score" %>
+    </div>
+    <div class="d field score witnesscx">
+      <%= f.label :d_witness_1_cx %>
+      <%= f.text_field :d_witness_1_cx, :class => "d score" %>
+    </div>
+    <div class="p field score cx">
+      <%= f.label :p_cx_1 %>
+      <%= f.text_field :p_cx_1, :class => "p score" %>
+    </div>
+  </div>
+
+  <div class="witness holder" id="witness_5" >
+    <div class="d field score dx">
+      <%= f.label :d_dx_2 %>
+      <%= f.text_field :d_dx_2, :class => "d score" %>
+    </div>
+    <div class="d field score witnessdx">
+      <%= f.label :d_witness_2 %>
+      <%= f.text_field :d_witness_2, :class => "d score" %>
+    </div>
+    <div class="d field score witnesscx">
+      <%= f.label :d_witness_2_cx %>
+      <%= f.text_field :d_witness_2_cx, :class => "d score" %>
+    </div>
+    <div class="p field score cx">
+      <%= f.label :p_cx_2 %>
+      <%= f.text_field :p_cx_2, :class => "p score" %>
+    </div>
+  </div>
+
+  <div class="witness holder" id="witness_6" >
+    <div class="d field score dx">
+      <%= f.label :d_dx_3 %>
+      <%= f.text_field :d_dx_3, :class => "d score" %>
+    </div>
+    <div class="d field score witnessdx">
+      <%= f.label :d_witness_3 %>
+      <%= f.text_field :d_witness_3, :class => "d score" %>
+    </div>
+    <div class="d field score witnesscx">
+      <%= f.label :d_witness_3_cx %>
+      <%= f.text_field :d_witness_3_cx, :class => "d score" %>
+    </div>
+    <div class="p field score cx">
+      <%= f.label :p_cx_3 %>
+      <%= f.text_field :p_cx_3, :class => "p score" %>
+    </div>
+  </div>
+
+  <div class="holder" id="close" >
+   <div class="p field score">
+      <%= f.label :p_close %>
+      <%= f.text_field :p_close, :class => "p score" %>
+    </div>
+    <div class="d field score">
+      <%= f.label :d_close %>
+      <%= f.text_field :d_close, :class => "d score" %>
+    </div>
+  </div>
+  <div class="holder" id="running_total" >
+   <div class="p field score">
+      <div id="p_total_label">Total: <span id="p_total">0</span></div>
+    </div>
+    <div class="d field score">
+      <div id="d_total_label">Total: <span id="d_total">0</span></div>
+    </div>
+  </div>
+
+  <% competitors = pairing.affs.first.competitors + pairing.negs.first.competitors%>
+  <% competitor_select = [['','']] %>
+  <% competitors.each do |c| %>
+  <%    competitor_select << [c.name, c.id] %>
+  <% end %>
+
+  <div class="holder" id="ranks" >
+    <span class="attyrank attyrank_label">Attorney Ranks</span>
+    <div class="field attyrank attyrank_1">
+      <%= f.label :atty_rank_1, "1. " %>
+      <%= f.select(:atty_rank_1, options_for_select(competitor_select)) %>
+    </div>
+    <div class="field attyrank attyrank_2">
+      <%= f.label :atty_rank_2, "2. "  %>
+      <%= f.select(:atty_rank_2, options_for_select(competitor_select)) %>
+    </div>
+    <div class="field attyrank attyrank_3">
+      <%= f.label :atty_rank_3, "3. " %>
+      <%= f.select(:atty_rank_3, options_for_select(competitor_select)) %>
+    </div>
+    <div class="field attyrank attyrank_4">
+      <%= f.label :atty_rank_4, "4. " %>
+      <%= f.select(:atty_rank_4, options_for_select(competitor_select)) %>
+    </div>
+    <span class="witrank witrank_label">Witness Ranks</span>
+    <div class="witrank field witrank_1">
+      <%= f.label :witness_rank_1, "1. " %>
+      <%= f.select(:witness_rank_1, options_for_select(competitor_select)) %>
+    </div>
+    <div class="witrank field witrank_2">
+      <%= f.label :witness_rank_2, "2. " %>
+      <%= f.select(:witness_rank_2, options_for_select(competitor_select)) %>
+    </div>
+    <div class="witrank field witrank_3">
+      <%= f.label :witness_rank_3, "3. " %>
+      <%= f.select(:witness_rank_3, options_for_select(competitor_select)) %>
+    </div>
+    <div class="witrank field witrank_4">
+      <%= f.label :witness_rank_4, "4. " %>
+      <%= f.select(:witness_rank_4, options_for_select(competitor_select)) %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :value => "Submit Ballot" %>
+  </div>
+<% end %>

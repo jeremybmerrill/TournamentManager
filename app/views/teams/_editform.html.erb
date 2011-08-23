@@ -1,0 +1,29 @@
+<%= form_for @team do |team_form| %>
+    <div>
+    <%= label :school, "School" %><br />
+    <%= team_form.text_field :school %>
+    </div>
+    <% if defined? :tournament_id %>
+      <%= hidden_field_tag(:tournament_id, params[:tournament_id]) %>
+    <% end %>
+    <div>
+    <%= label :amtaid, "AMTA Team Number" %><br />
+    <%= team_form.text_field :amtaid %>
+    </div>
+    <div>
+    <%= label :teamabcd, "Team A B C D" %><br />
+    <%= team_form.text_field :teamabcd %>
+    </div>
+    <div>
+    <%= label :contactemail, "Contact Email" %><br />
+    <%= team_form.email_field :contactemail %>
+    </div>
+    <div>
+    <%= label :contactphone, "Contact Phone" %><br />
+    <%= team_form.telephone_field :contactphone %>
+    </div>
+
+    <div class="actions">
+       <%= submit_tag( "Create" )%>
+    </div>
+<% end %>

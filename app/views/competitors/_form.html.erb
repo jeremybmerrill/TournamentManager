@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :captain, "Is this competitor a team captain?" %>
+    <%= f.check_box :captain %>
+  </div>
+  <div class="field">
     <%= f.label :team_id, "Team" %><br />
     <% team_id = params[:team_id] %>
     <% team_select = [['','']] %>
@@ -26,11 +30,11 @@
   </div>
   <div class="field">
     <%= f.label(:contactemail, "Email (Optional)") %><br />
-    <%= f.text_field :contactemail %>
+    <%= f.email_field :contactemail %>
   </div>
   <div class="field">
     <%= f.label(:contactphone, "Phone (Optional)")%><br />
-    <%= f.text_field :contactphone %>
+    <%= f.telephone_field :contactphone %>
   </div>
   <div class="actions">
     <%= f.submit %>

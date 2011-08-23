@@ -25,3 +25,72 @@ span.identifier{
   font-weight: bold;
 }
 
+
+ /* ballot styles & positioning*/
+form.new_amta_ballot{
+  width: 100%;
+  position: relative;
+}
+form.new_amta_ballot .holder{
+  width: 80%;
+  position: relative;
+  height: 30px;
+}
+form.new_amta_ballot div.holder.witness{
+  height: 90px;
+  margin: 15px 0px;
+}
+form.new_amta_ballot .holder div.field{
+  width: 30%;
+}
+form.new_amta_ballot div.p{
+  left: 10%;
+  position: absolute;
+}
+form.new_amta_ballot div.d{
+  left: 60%;
+  position: absolute;
+}
+form.new_amta_ballot div.witnessdx{
+  top: 35%
+}
+form.new_amta_ballot div.witnesscx{
+  top: 70%
+}
+form.new_amta_ballot div#ranks{
+  height: 120px;
+}
+form.new_amta_ballot div.attyrank{
+  left: 10%;
+  position: absolute;
+}
+form.new_amta_ballot div.witrank{
+  left: 60%;
+  position: absolute;
+}
+form.new_amta_ballot span.attyrank_label{ top: 0%; }
+form.new_amta_ballot span.witrank_label{ top: 0%; }
+form.new_amta_ballot div.attyrank_1{ top: 20%; }
+form.new_amta_ballot div.witrank_1{ top: 20%; }
+form.new_amta_ballot div.attyrank_2{ top: 40%; }
+form.new_amta_ballot div.witrank_2{ top: 40%; }
+form.new_amta_ballot div.attyrank_3{ top: 60%; }
+form.new_amta_ballot div.witrank_3{ top: 60%; }
+form.new_amta_ballot div.attyrank_4{ top: 80%; }
+form.new_amta_ballot div.witrank_4{ top: 80%; }
+form.new_amta_ballot div.score input[type="text"] {
+  width: 50px;
+  position: absolute;
+}
+form.new_amta_ballot div.score input[type="text"] {
+  left: 60%;
+}
+
+form.new_amta_ballot div#wit_rank{
+  /* margin-left: 15%; */
+}
+form.new_amta_ballot div.actions{
+  width: 100%;
+  margin-top: 2%;
+  margin-left: 10%;
+}

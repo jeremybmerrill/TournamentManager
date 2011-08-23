@@ -1,0 +1,2 @@
+module AmtaBallotsHelper
+end

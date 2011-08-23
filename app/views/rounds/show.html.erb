@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tournament:</b>
+  <% @tournament = Tournament.find(@round.tournament_id) %>
+  <%= link_to @tournament.title + " Round " + @round.index.to_s, @tournament %>
+</p>
+
+<p>
+  <b>Pairings</b>
+  <table>
+  <tr>
+    <th><%= @tournament.translate(@tournament.type_of_competition, "Aff") %></th>
+    <th></th>
+    <th><%= @tournament.translate(@tournament.type_of_competition, "Neg") %></th>
+    <th>Room</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @round.pairings.each do |p| %>
+    <% aff_string = "" %>
+    <% p.affs.each do |aff| %>
+      <% aff_string += aff.school + " " + aff.teamabcd %>
+    <% end %>
+    <% neg_string = "" %>
+    <% p.negs.each do |neg| %>
+      <% neg_string += neg.school + " " + neg.teamabcd %>
+    <% end %>
+    <tr>
+      <td>
+      <%= aff_string %>
+      </td>
+      <td> vs. </td>
+      <td>
+      <%= neg_string %>
+      </td>
+      <td>
+      <%= (p.room or " " ) %>
+      <%= link_to 'Change', edit_tournament_round_pairing_path(@tournament, @round, p) %>
+      </td>
+      <td><%= link_to('Delete Pairing', [p.round.tournament, p.round, p], 
+                      :confirm => "Are you sure you want to delete this pairing? If these pairings were automatically generated, this deletion will be recorded on the pairings log.", 
+                      :method => :delete)%>
+      </td>
+
+    </tr>
+  <% end %>
+  </table>
+</p>
+<a href="#" id="manual_pairing">Manual Pairing</a>
+<%= render :partial => "pairings/manual" %>

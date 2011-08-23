@@ -1,0 +1,19 @@
+<% @pairing = Pairing.new(:round_id => params[:id]) %>
+<%= form_tag tournament_round_pairings_path(@tournament, @round), :method => :post, :id=>:manual_pairing do %>
+  <div class="field">
+    <% tournament = Tournament.find(@round.tournament_id) %>
+    <% team_select = [["",""]] %>
+    <% @round.unpaired_teams.each do |t| %>
+    <%  team_select << [t.amtaid + " -- " + t.school + " " + t.teamabcd, t.id] %>
+    <% end %>
+    <%= label_tag :aff_id, tournament.translate(tournament.type_of_competition, "Aff")%>
+    <%= select_tag(:aff_id, options_for_select(team_select)) %>
+    <%= label_tag :neg_id, tournament.translate(tournament.type_of_competition, "Neg") %>
+    <%= select_tag(:neg_id, options_for_select(team_select)) %>
+
+    <%= label_tag :room %> <%= text_field_tag :room %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Save Pairing" %>
+  </div>
+<% end %>

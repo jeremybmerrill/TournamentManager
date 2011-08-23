@@ -16,8 +16,12 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :date %><br />
-    <%= f.text_field :date %>
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date, :order => [:month, :day, :year] %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br />
+    <%= f.date_select :end_date, :order => [:month, :day, :year] %>
   </div>
   <div class="field">
     <%= f.label :host %><br />
@@ -30,12 +34,12 @@
     <span class="example">e.g. Merrill Hall</span>
   </div>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.select(:type, options_for_select([['AMTA', 'AMTA'], ['WTFA', 'WTFA'], ['OMGP', 'OMGP']])) %>
+    <%= f.label :type_of_competition %><br />
+    <%= f.select(:type_of_competition, options_for_select([['AMTA', 'AMTA'], ['WTFA', 'WTFA'], ['OMGP', 'OMGP']])) %>
   </div>
   <div class="field">
-    <%= f.label :rounds %><br />
-    <%= f.select(:rounds, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],])) %>
+    <%= f.label :num_rounds %><br />
+    <%= f.select(:num_rounds, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],])) %>
   </div>
   <div class="field">
     <%= f.label :info %><br />

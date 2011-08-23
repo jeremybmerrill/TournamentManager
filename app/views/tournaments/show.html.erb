@@ -4,15 +4,17 @@
 
 <p>
   <span class="identifier" id="date">Date:</span>
-  <%= @tournament.date %>
+  <%= @tournament.start_date.readable_inspect %> 
+  through 
+  <%= @tournament.end_date.readable_inspect %>
 </p>
 
 <p>
   Hosted by <span id="host"><%= @tournament.host %></span> at <span id="location"><a href="http://maps.google.com/?<%= @tournament.location %>"><%= @tournament.location %></a></span>
 </p>
 <p>
-  <span class="identifier" id="type">Type:</span>
-  <%= @tournament.num_rounds %>-round <%= @tournament.type %> tournament
+  <span class="identifier" id="type_of_competition">Type Of Competition:</span>
+  <%= @tournament.num_rounds %>-round <%= @tournament.type_of_competition %> tournament
 </p>
 <p id="info">
   <%= @tournament.info %>
@@ -31,7 +33,19 @@
   <li id="new_team"><%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id) %></li>
   </ul>
 </p>
-
+<p>
+  <span class="identifier" id="rounds">Rounds:</span>
+  <ul>
+  <% @rounds = @tournament.rounds %>
+  <% @rounds.each do |round| %>
+    <li>
+      <%= link_to tournament_round_path(@tournament, round) do %>
+        Round <%= round.index %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_tournament_path(@tournament) %>
 

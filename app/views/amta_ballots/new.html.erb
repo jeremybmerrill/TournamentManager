@@ -1,0 +1,8 @@
+<h1>Ballot</h1>
+<% pairing = Pairing.find(params[:pairing_id]) %>
+<h3>for <b><%= link_to pairing.affs.first.school + " " + pairing.affs.first.teamabcd, pairing.affs.first.team %></b> vs. 
+        <b><%= link_to pairing.negs.first.school + " " + pairing.negs.first.teamabcd, pairing.negs.first.team %></b><br />
+        <b><%= link_to pairing.round.tournament.title, pairing.round.tournament %> <%= link_to"Round " + pairing.round.index.to_s, [pairing.round.tournament, pairing.round] %></b></h3>
+
+<span id="p_amtaid"><%= pairing.affs.first.amtaid %></span> <span id="d_amtaid"><%= pairing.negs.first.amtaid %></span>
+<%= render 'form' %>

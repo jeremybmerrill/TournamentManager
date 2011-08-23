@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Date</th>
+    <th>Start Date</th>
     <th>Location</th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @tournaments.each do |tournament| %>
   <tr>
     <td><%= link_to tournament do %><%= tournament.title %><% end %></td>
-    <td><%= tournament.date %></td>
+    <td><%= tournament.start_date.inspect %></td>
     <td><%= tournament.location %></td>
     <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
     <td><%= link_to 'Destroy', tournament, :confirm => 'Are you sure?', :method => :delete %></td>

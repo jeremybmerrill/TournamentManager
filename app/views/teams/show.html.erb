@@ -20,12 +20,12 @@
   <span class="identifier" id="upcoming_tournaments">Upcoming Tournaments</span>
   <% @tournaments = @team.tournaments %>
   <% @tournaments.each do |tournament| %>
-    <% if tournament.date != 0 #TODO: make this actually aware of dates.%> 
+    <% if tournament.start_date >= Date.today #TODO: make this actually aware of dates.%> 
       <li>
       <%= link_to (tournament) do %>
         <%= tournament.title%>
       <% end %>
-        &nbsp;on <%= tournament.date %>
+        &nbsp;on <%= tournament.start_date.inspect %>
       </li>
     <% end %>
   <% end %>
@@ -73,12 +73,12 @@
   <span class="identifier" id="past_tournaments">Past Tournaments:</span>
   <% @team.tournament_ids.each do |id| %>
     <% @tournament = Tournament.find(id) %>
-    <% if @tournament.date == 0 #TODO: make this actually aware of dates.%> 
+    <% if @tournament.start_date < Date.today #TODO: make this actually aware of dates.%> 
       <li>
       <%= link_to (@tournament) do %>
         <%= @tournament.title %>
       <% end %>
-        on <%= @tournament.date %>
+        on <%= @tournament.start_date.inspect %>
       </li>
     <% end %>
   <% end %>

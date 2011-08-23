@@ -1,0 +1,16 @@
+<h1><%= link_to(@pairing.round.tournament.title, @pairing.round.tournament) %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<h3>
+  <b><%= @pairing.affs.first.school + " " + @pairing.affs.first.teamabcd %></b> vs. <b><%= @pairing.negs.first.school + " " + @pairing.negs.first.teamabcd %></b>
+</h3>
+<p><%= link_to("Round " + @pairing.round.index.to_s, [@pairing.round.tournament, @pairing.round]) %></p>
+<p>
+  <b>Room:</b>
+  <%= @pairing.room %> <%= link_to 'Edit', edit_tournament_round_pairing_path(@pairing.round.tournament, @pairing.round, @pairing) %>
+</p>
+
+<p>
+  <%= link_to 'Enter Ballot', new_tournament_round_pairing_amta_ballot_path(@pairing.round.tournament, @pairing.round, @pairing) %>
+</p>

@@ -1,0 +1,22 @@
+<%= form_for(@pairing, :url => tournament_round_pairing_path(@pairing.round, @pairing)) do |f| %>
+
+  <% if @pairing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pairing.errors.count, "error") %> prohibited this round from being saved:</h2>
+
+      <ul>
+      <% @pairing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :room %><br />
+    <%= f.text_field :room %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

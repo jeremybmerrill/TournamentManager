@@ -42,9 +42,22 @@ class TeamsController < ApplicationController
   def create
     #create competitors too
     @team = Team.new(params[:team])
-    competitor = params[:competitors]
-    @team.competitors.build(competitor)
-    @team.tournaments << Tournament.find(params[:tournament_id])
+
+    my_competitors = params[:competitors]
+    captains = Array.new
+    (1..6).each do |n|
+      if params["captain_" + n.to_s].empty?
+        captains << false
+      else
+        captains << true
+      end
+    end
+
+    my_competitors.each do |comp|
+        @team.competitors.build(comp) unless comp["name"].empty?
+    end
+    @team.tournaments << Tournament.find(params[:tournament_id]) unless params[:tournament_id].empty?
+
 
     respond_to do |format|
       if @team.save

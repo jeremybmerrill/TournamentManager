@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-    has_many :competitors, :dependent => :destroy
+    has_many :competitors
     has_and_belongs_to_many :tournaments
     
     validates_format_of :amtaid, :with => /[0-9]{3,4}/

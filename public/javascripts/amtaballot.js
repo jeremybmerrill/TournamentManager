@@ -1,24 +1,38 @@
-$(document).ready(function(){
+jQuery(document).ready(function(){
   /* Do running totals */
 
-  $('input.d.score').change(function(){
+  jQuery('input.d.score').change(function(){
     var dtotal;
-    $('input.d.score').val(); /* sum all of those */
-    $('span.d_total').val(ptotal);
-  }
-  $('input.p.score').change(function(){
+    ptotal = 0;
+    jQuery('input.d.score').each(function(){
+      try{
+        var parsed;
+        parsed = parseInt(jQuery(this).val());
+        if (!isNaN(parsed)){
+          dtotal += parsed;
+        }
+      }catch(e){}
+    });
+    jQuery('span#d_total').text(dtotal);
+  });
+
+  jQuery('input.p.score').change(function(){
     var ptotal;
-    $('input.p.score').val(); /* sum all of those */
-    $('span.p_total').val(ptotal);
-  }
-
-  
-  /* Ensure values are 0 - 10 */
-  $('input.p.score').change(function(){
-    var pval = $('input.p.score').val();
-
-    if(pval /* isn't an int */ or pval > 10 or pval < 0){
-      /* reject it, highlight the textbox red?, focus the textbox */
-    }
-  }
+    ptotal = 0;
+    jQuery('input.p.score').each(function(){
+      try{
+        var parsed;
+        parsed = parseInt(jQuery(this).val());
+        if (!isNaN(parsed)){ /* add number check here */
+          ptotal += parsed;
+          jQuery(this).removeClass('failbox');
+        }else{
+          if(jQuery(this).val() != ""){
+            jQuery(this).addClass('failbox');
+          }
+        }
+      }catch(e){}
+    });
+    jQuery('span#p_total').text(ptotal);
+  });
 });

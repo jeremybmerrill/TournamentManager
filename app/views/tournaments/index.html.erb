@@ -14,8 +14,13 @@
     <td><%= link_to tournament do %><%= tournament.title %><% end %></td>
     <td><%= tournament.start_date.inspect %></td>
     <td><%= tournament.location %></td>
-    <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
-    <td><%= link_to 'Destroy', tournament, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if current_user == tournament.user %>
+      <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
+      <td><%= link_to 'Destroy', tournament, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% else %>
+      <td></td>
+      <td></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

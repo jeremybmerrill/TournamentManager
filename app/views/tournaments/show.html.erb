@@ -47,5 +47,8 @@
   </ul>
 </p>
 
-<%= link_to 'Edit', edit_tournament_path(@tournament) %>
+<% if current_user == @tournament.user %>
+  <%= link_to 'Edit', edit_tournament_path(@tournament) %>
+  <%= link_to 'Destroy', @tournament, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
 

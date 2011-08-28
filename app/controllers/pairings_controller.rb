@@ -1,4 +1,7 @@
 class PairingsController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   # GET /pairings
   # GET /pairings.xml
   def index

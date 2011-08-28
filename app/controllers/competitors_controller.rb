@@ -1,4 +1,8 @@
 class CompetitorsController < ApplicationController
+
+  before_filter :authenticate_user!
+
+
   # GET /competitors
   # GET /competitors.xml
   def index

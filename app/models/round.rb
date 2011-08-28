@@ -45,7 +45,7 @@ class Round < ActiveRecord::Base
           if aff.save and neg.save
             pairing_log << "Automatically paired #{aff.amtaid} vs. #{neg.amtaid}.\n"
           end
-          if pairings.size == tournament.rooms.size
+          if pairings.size >= tournament.rooms.size
             #assign the rooms
           end
           pairing.save

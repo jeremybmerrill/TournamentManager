@@ -1,10 +1,8 @@
 
-if(Object.isUndefined($))
-  throw("manualpairing.js requires jquery.min.js library");
-
-$(document).ready(function(){
-  $('form#manual_pairing').hide();
-  $('a#manual_pairing').click(function(){
-    $('form#manual_pairing').show();
+jQuery(document).ready(function(){
+  jQuery('form#manual_pairing').hide();
+  jQuery('a#manual_pairing_show').click(function(){
+    jQuery('form#manual_pairing').show();
+    jQuery('a#manual_pairing_show').hide();
   });
 });

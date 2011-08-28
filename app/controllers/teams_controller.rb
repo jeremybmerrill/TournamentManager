@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /teams
   # GET /teams.xml
   def index
@@ -44,17 +47,16 @@ class TeamsController < ApplicationController
     @team = Team.new(params[:team])
 
     my_competitors = params[:competitors]
-    captains = Array.new
     (1..6).each do |n|
-      if params["captain_" + n.to_s].empty?
-        captains << false
+      if params.has_key?("captain_" + n.to_s)
+        my_competitors[n-1][:captain] = true;
       else
-        captains << true
+        my_competitors[n-1][:captain] = false;
       end
     end
 
     my_competitors.each do |comp|
-        @team.competitors.build(comp) unless comp["name"].empty?
+        @team.competitors.build(comp) unless comp["name"].nil? or comp["name"].empty?
     end
     @team.tournaments << Tournament.find(params[:tournament_id]) unless params[:tournament_id].empty?
 

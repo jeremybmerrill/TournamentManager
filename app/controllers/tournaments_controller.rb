@@ -1,4 +1,7 @@
 class TournamentsController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   # GET /tournaments
   # GET /tournaments.xml
   def index
@@ -44,6 +47,8 @@ class TournamentsController < ApplicationController
     (1..@tournament.num_rounds).each do |n|
       @tournament.rounds.build(:index => n)
     end
+    @tournament.user = current_user
+    @tournament.rooms = params[:rooms]
 
     respond_to do |format|
       if @tournament.save
@@ -62,12 +67,17 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
 
     respond_to do |format|
-      if @tournament.update_attributes(params[:tournament])
-        format.html { redirect_to(@tournament, :notice => 'Tournament was successfully updated.') }
-        format.xml  { head :ok }
+      if @tournament.user == current_user
+        if @tournament.update_attributes(params[:tournament])
+          format.html { redirect_to(@tournament, :notice => 'Tournament was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @tournament.errors, :status => :unprocessable_entity }
+        end
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @tournament.errors, :status => :unprocessable_entity }
+          format.html { redirect_to(@tournament, :notice => 'You need to be logged in as this tournament\'s owner to edit it!') }
+          format.xml  { render :xml => @tournament.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -76,11 +86,15 @@ class TournamentsController < ApplicationController
   # DELETE /tournaments/1.xml
   def destroy
     @tournament = Tournament.find(params[:id])
-    @tournament.destroy
-
     respond_to do |format|
-      format.html { redirect_to(tournaments_url) }
-      format.xml  { head :ok }
+      if @tournament.user == current_user
+        @tournament.destroy
+        format.html { redirect_to(tournaments_url) }
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(@tournament, :notice => 'You need to be logged in as this tournament\'s owner to delete it!') }
+        format.xml  { render :xml => @tournament.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end

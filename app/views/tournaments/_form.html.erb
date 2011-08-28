@@ -34,6 +34,15 @@
     <span class="example">e.g. Merrill Hall</span>
   </div>
   <div class="field">
+    <%= label_tag :rooms %><br />
+    <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput1" %><span class="example">e.g. 302A</span><br />
+    <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput2", :style => "display: block;" %>
+    <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput3", :style => "display: block;" %>
+    <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput4", :style => "display: block;" %>
+    <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput5", :style => "display: block;" %>
+    <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput6", :style => "display: block;" %>
+  </div>
+  <div class="field">
     <%= f.label :type_of_competition %><br />
     <%= f.select(:type_of_competition, options_for_select([['AMTA', 'AMTA'], ['WTFA', 'WTFA'], ['OMGP', 'OMGP']])) %>
   </div>

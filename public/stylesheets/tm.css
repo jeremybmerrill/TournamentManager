@@ -2,9 +2,35 @@
 
 body{
   background-color: gray;
+  margin: 0;
+  padding: 0;
+}
+div#topbar{
+  position: fixed;
+  height: 30px;
+  width: 100%;
+  background-color: #900;
+  z-index: 2;
+}
+div#usernav{
+  width: 800px;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 30px;
+  overflow: hide;
+  clear: float;
+  padding: 3px 0px;
+}
+span#logo{
+  float: left;
+}
+span#sign_in{
+  float: right;
 }
 div#container{
-  padding: 15px 30px;
+  padding: 15px 30px;  
+  padding-top: 35px; /* 30 pix for fixed topbar, 5 pix for spacing */
   background-color: white;
   width: 800px;
   margin-left: auto;
@@ -20,11 +46,21 @@ div#container{
 form span.example{
   color: gray;
 }
-
 span.identifier{
   font-weight: bold;
 }
-
+div#usernav{
+  color: white;
+}
+div#usernav a, div#usernav a:visited{
+  color: white;
+}
+span#logo{
+  font-size: 24px;
+}
+span#logo a{
+  text-decoration: none;
+}
 
  /* ballot styles & positioning*/
 form.new_amta_ballot{
@@ -93,4 +129,9 @@ form.new_amta_ballot div.actions{
   width: 100%;
   margin-top: 2%;
   margin-left: 10%;
+}
+form.new_amta_ballot .failbox{
+  border-style: inset;
+  border-color: red;
+  border-width: 2px;
 }

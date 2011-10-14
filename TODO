@@ -1,0 +1,33 @@
+users / "auth" <!-- devise
+  Types of users:
+    Me - "God" -- access to everything, including "hidden", like pairings pages
+    Subscriber/TournamentManager -- access to: tournament creation, their tournaments, all teams? teams in their tournament?
+
+Could each object be owned by someone? Those which are not owned by a user are owned by the god user
+
+Existing teams:
+  Rewrite competitors/_form's team dropdown box to only show teams in the proper tournament (based on the tournaments visible to the user)
+  Make 'Add Existing Team' dialog -- autocomplete
+
++ allow add existing players to teams
+    (Automatically check name against existing names? A dropdown of all players on teams for that school?)
+
+Automatic pairing for a round
+    later, add judge info to pairings
+    pairings log -> logs everything itj does to generate pairings. (a column in tournaments in db?) Add usernames of person who did action; add timestamps.
+
+Add indexes to database
+
+How to 'claim' a competitor as yourself.
+
+add routing to let users to go tabro.om/tournaments/stagvitational-2011
+  (Alternatively /stagvitational goes to the edition of stagvitational that's closest in time to now, stagvitational-#{year} always works.)
+
+#-----
+
+implement "translation" in tournament.rb for pro => plaintiff, etc.
+
+Ballots
+ Change dropdown for ballot atty/wit ranks to indicate team, (later, indicate role)
+
+--

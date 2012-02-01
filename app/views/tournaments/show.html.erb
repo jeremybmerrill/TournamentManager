@@ -21,7 +21,7 @@
 </p>
 <p>
   <span class="identifier" id="teams">Teams:</span>
-  <ul>
+  <ol>
   <% @teams = @tournament.teams %>
   <% @teams.each do |team| %>
     <li>
@@ -30,25 +30,24 @@
       <% end %>
     </li>
   <% end %>
-  <li id="new_team"><%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id) %></li>
-  </ul>
+  </ol>
+  </p>
+  <p>
+  <id="new_team"><%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id), :class => "smallButton" %>
 </p>
 <p>
-  <span class="identifier" id="rounds">Rounds:</span>
-  <ul>
+  <span class="identifier" id="rounds">Rounds:</span></p>
+  <p>
   <% @rounds = @tournament.rounds %>
   <% @rounds.each do |round| %>
-    <li>
       <%= link_to tournament_round_path(@tournament, round) do %>
         Round <%= round.index %>
       <% end %>
-    </li>
   <% end %>
-  </ul>
 </p>
 
 <% if current_user == @tournament.user %>
-  <%= link_to 'Edit', edit_tournament_path(@tournament) %>
+  <%= link_to 'Edit Tournament', edit_tournament_path(@tournament), :class => "smallButton" %>
   <%= link_to 'Destroy', @tournament, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
 

@@ -1,20 +1,20 @@
 /* Layout */
 
 body{
-  background-color: gray;
+  background-image: url(http://jacinthsohi.com/images/tmbackground.png);
   margin: 0;
   padding: 0;
 }
 div#topbar{
   position: fixed;
-  height: 30px;
+  height: 50px;
   width: 100%;
   background-color: #900;
   z-index: 2;
 }
 div#usernav{
   width: 800px;
-  margin-top: 3px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   max-height: 30px;
@@ -30,7 +30,7 @@ span#sign_in{
 }
 div#container{
   padding: 15px 30px;  
-  padding-top: 35px; /* 30 pix for fixed topbar, 5 pix for spacing */
+  padding-top: 60px; /* 50 pix for fixed topbar, 10 pix for spacing */
   background-color: white;
   width: 800px;
   margin-left: auto;
@@ -38,6 +38,49 @@ div#container{
 
   height: 100%;
   min-height: 800px;
+}
+
+/* Button styling */
+
+
+.blueButton {
+	background-color:#4ba4f2;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+}.blueButton:hover {
+	background-color:#d7dae3;
+}.blueButton:active {
+	position:relative;
+	top:1px;
+}
+
+.smallButton {
+	background-color:#4ba4f2;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:11px;
+	font-weight:bold;
+	padding:3px 10px;
+	text-decoration:none;
+}.smallButton:hover {
+	background-color:#d7dae3;
+}.smallButton:active {
+	position:relative;
+	top:1px;
 }
 
 

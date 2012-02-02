@@ -17,16 +17,18 @@
   <%= @team.contactphone %>
 </p>
 <p>
-  <span class="identifier" id="upcoming_tournaments">Upcoming Tournaments</span>
+  <span class="identifier" id="upcoming_tournaments">Upcoming Tournaments:</span>
+  </p>
+  <p>
   <% @tournaments = @team.tournaments %>
   <% @tournaments.each do |tournament| %>
     <% if tournament.start_date >= Date.today #TODO: make this actually aware of dates.%> 
-      <li>
+      
       <%= link_to (tournament) do %>
         <%= tournament.title%>
       <% end %>
         &nbsp;on <%= tournament.start_date.inspect %>
-      </li>
+      
     <% end %>
   <% end %>
   

@@ -1,5 +1,7 @@
 TournamentManager::Application.routes.draw do
 
+  resources :participants
+
   devise_for :gods
   devise_for :users
 

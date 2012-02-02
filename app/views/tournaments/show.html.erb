@@ -1,5 +1,6 @@
 
 <h1><%= @tournament.title %></h1>
+<br>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -19,6 +20,7 @@
 <p id="info">
   <%= @tournament.info %>
 </p>
+<br>
 <p>
   <span class="identifier" id="teams">Teams:</span>
   <ol>
@@ -32,9 +34,11 @@
   <% end %>
   </ol>
   </p>
+  <br>
   <p>
-  <id="new_team"><%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id), :class => "smallButton" %>
+  <id="new_team"><%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id), :class => "btn" %>
 </p>
+<br>
 <p>
   <span class="identifier" id="rounds">Rounds:</span></p>
   <p>
@@ -45,9 +49,9 @@
       <% end %>
   <% end %>
 </p>
-
+<br>
 <% if current_user == @tournament.user %>
-  <%= link_to 'Edit Tournament', edit_tournament_path(@tournament), :class => "smallButton" %>
+  <%= link_to 'Edit Tournament', edit_tournament_path(@tournament), :class => "btn" %>
   <%= link_to 'Destroy', @tournament, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
 

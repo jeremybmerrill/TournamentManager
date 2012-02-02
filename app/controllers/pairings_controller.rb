@@ -109,3 +109,23 @@ class PairingsController < ApplicationController
     end
   end
 end
+
+# POST /pairings
+# POST /pairings.json
+def create
+    @pairings = Pairings.new(params[:pairings])
+    
+    respond_to do |format|
+        if @pairings.save
+            # Tell the UserMailer to send an Email to participants after save
+            UserMailer.pairings_email(@participants).deliver
+            
+            format.html { redirect_to(@pairings, :notice => 'Pairings have been sent!') }
+            format.json { render :json => @pairings, :status => :created, :location => @pairings }
+            else
+            format.html { render :action => "new" }
+            format.json { render :json => @pairings.errors, :status => :unprocessable_entity }
+        end
+    end
+end
+

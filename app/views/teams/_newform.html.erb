@@ -1,35 +1,44 @@
 <%= form_for @team do |team_form| %>
+
     <div>
-    <%= label :school, "School" %><br />
+    <%= label :school, "School" %>
     <%= team_form.text_field :school %>
     </div>
     <% if defined? :tournament_id %>
       <%= hidden_field_tag(:tournament_id, params[:tournament_id]) %>
     <% end %>
     <div>
-    <%= label :amtaid, "AMTA Team Number" %><br />
+    <br />
+    <%= label :amtaid, "AMTA Team Number" %>
     <%= team_form.text_field :amtaid %>
     </div>
     <div>
-    <%= label :teamabcd, "Team A B C D" %><br />
+    <br />
+    <%= label :teamabcd, "Team A B C D" %>
     <%= team_form.text_field :teamabcd %>
     </div>
     <div>
-    <%= label :contactemail, "Contact Email" %><br />
+    <br />
+    <%= label :contactemail, "Contact Email" %>
     <%= team_form.email_field :contactemail %>
     </div>
     <div>
-    <%= label :contactphone, "Contact Phone" %><br />
+    <br />
+    <%= label :contactphone, "Contact Phone" %>
     <%= team_form.telephone_field :contactphone %>
     </div>
-    <% (1..6).each do |i| %>
+    <br />
+    <h3>Competitors</h3>
+    <br />
+    <% (1..8).each do |i| %>
         <div>
-        <%= label :name, "Competitor name" %>
+       <%= label :name, "Competitor name" %>
         <input name="competitors[][name]" type="text"/> <%= label "captain_#{i}", "Captain?" %><%= check_box_tag "captain_#{i}" %><br />
-        </div>
+       <br />
+       </div>
     <% end %>
-
+<br />
     <div class="actions">
-       <%= submit_tag( "Create" )%>
+       <%= submit_tag( "Create new team" )%>
     </div>
 <% end %>

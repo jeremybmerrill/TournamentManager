@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @team.school %> <%= @team.teamabcd %> </h1>
-
+<br />
 <p>
   <span class="identifier" id="id">Amtaid:</span>
   <%= @team.amtaid %>
@@ -33,9 +33,10 @@
   <% end %>
   
 </p>
+<br />
 <p>
     <span class="identifier" id="competitors">Competitors</span>
-        <table>
+        <table cellpadding="10px">
           <tr>
             <th>Name</th>
             <th>Email</th>

@@ -4,6 +4,8 @@
   <title>TournamentManager</title>
   <%= stylesheet_link_tag :all %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js"></script>
+
   <%= javascript_include_tag :defaults, "addrooms", "manualpairing", "amtaballot" %>
   <%= csrf_meta_tag %>
 </head>
@@ -24,8 +26,19 @@
     </span>
   </div>
 </div>
-<div id="container">
 
+	<div class="navbar-inner">
+    <ul class="nav nav-pills">
+     
+      <li><a href="#labels">Labels</a></li>
+      <li><a href="#thumbnails">Thumbnails</a></li>
+      <li><a href="#alerts">Alerts</a></li>
+      <li><a href="#progress">Progress bars</a></li>
+      <li><a href="#misc">Miscellaneous</a></li>
+   	 </ul>
+	</div>
+
+<div id="container">
 <%= yield %>
 
 </div>

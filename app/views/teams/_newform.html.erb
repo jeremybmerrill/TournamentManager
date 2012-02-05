@@ -1,5 +1,10 @@
 <%= form_for @team do |team_form| %>
-
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#overview"><strong>Step 1:</strong> Basic information</a></li>
+		<li><a href="#competitors"><strong>Step 2:</strong> Add competitors</a></li>
+	</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="overview">
     <div>
     <%= label :school, "School" %>
     <%= team_form.text_field :school %>
@@ -26,8 +31,11 @@
     <br />
     <%= label :contactphone, "Contact Phone" %>
     <%= team_form.telephone_field :contactphone %>
+    <br /><br />
+    <a href="#competitors" class="btn">Add competitors</a>
     </div>
-    <br />
+</div>
+<div class="tab-pane" id="competitors">
     <h3>Competitors</h3>
     <br />
     <% (1..8).each do |i| %>
@@ -41,4 +49,14 @@
     <div class="actions">
        <%= submit_tag( "Create new team" )%>
     </div>
+</div>
+</div>
+</div>
 <% end %>
+
+
+<script>
+  $(function () {
+    $('.tabs a:last').tab('show')
+  })
+</script>

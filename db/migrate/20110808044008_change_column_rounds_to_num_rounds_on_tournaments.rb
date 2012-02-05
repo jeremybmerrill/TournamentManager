@@ -4,7 +4,6 @@ class ChangeColumnRoundsToNumRoundsOnTournaments < ActiveRecord::Migration
     change_table :tournaments do |t|
       t.integer :num_rounds
     end
-    Tournament.update_all("num_rounds = ?", 4)
   end
 
   def self.down

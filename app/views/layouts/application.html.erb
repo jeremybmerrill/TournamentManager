@@ -21,10 +21,10 @@
           <a class="brand" href="./index.html">Tabroom</a>
           <div class="nav-collapse">
             <ul class="nav">
-                 <li><a href="#labels">Home</a></li>
-      <li><a href="#thumbnails">Pairings</a></li>
-      <li><a href="#alerts">Teams</a></li>
-      <li><a href="#progress"></a></li>
+                 <li><a href="/">Home</a></li>
+      <li><a href="/tournaments">Tournaments</a></li>
+      <li><a href="/teams">Teams</a></li>
+      <li><a href="#">Contact</a></li>
       <li> <% if user_signed_in? %>  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>  
       <% else %>  
         <%= link_to "Sign-In/Up", new_user_session_path %>  

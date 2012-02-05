@@ -1,5 +1,5 @@
 source :rubygems
 gem "rails"
-gem "sqlite3"
+gem "pg"
 gem "rack"
 gem "devise"

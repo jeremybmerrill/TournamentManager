@@ -1,11 +1,9 @@
 <header class="jumbotron masthead">
   <div class="inner">
     <h1>Welcome to Tab Room</h1>
-    <h3 align="center">Pairings, teams, alerts, and everything else you need at a tournament all in one place.</h3>
-    <br /><br /><br />
     <p>Are you a competitor or tournament administrator?</p>
-    <p class="download-info">
-      <a href="https://github.com/twitter/bootstrap/" class="btn btn-primary btn-large">Competitor</a>
-      <a href="assets/bootstrap.zip" class="btn btn-large">Administrator</a>
+    <p>
+    <a href="/tournaments" class="btn btn-primary btn-large">Competitor</a>
+    <%= link_to "Administrator", new_user_session_path, :class => "btn btn-primary btn-large"  %> 
     </p>
   </div>

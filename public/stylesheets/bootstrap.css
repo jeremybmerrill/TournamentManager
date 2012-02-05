@@ -19,6 +19,11 @@ nav,
 section {
   display: block;
 }
+body{
+  background-image: url(/images/background.png);
+  margin: 0;
+  padding: 0;
+}
 audio, canvas, video {
   display: inline-block;
   *display: inline;

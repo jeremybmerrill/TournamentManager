@@ -20,9 +20,26 @@
 <p id="info">
   <%= @tournament.info %>
 </p>
+
 <br>
 <p>
-  <span class="identifier" id="teams">Teams:</span>
+  <span class="identifier" id="rounds"><strong>Pairings:</strong></span></p>
+  
+  
+ <% @rounds = @tournament.rounds %>
+  <% @rounds.each do |round| %>
+  <ul class="nav nav-tabs nav-stacked">
+	<li>
+      <%= link_to tournament_round_path(@tournament, round) do %>
+        Round <%= round.index %>
+      <% end %>
+	</li>
+	<% end %>
+      </ul>
+</p>
+<br />
+<p>
+  <span class="identifier" id="teams"><strong>Teams:</strong></span>
   <ol>
   <% @teams = @tournament.teams %>
   <% @teams.each do |team| %>
@@ -34,23 +51,9 @@
   <% end %>
   </ol>
   </p>
-  <br>
-  <p>
-  <id="new_team"><%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id), :class => "btn" %>
-</p>
-<br>
-<p>
-  <span class="identifier" id="rounds">Rounds:</span></p>
-  <p>
-  <% @rounds = @tournament.rounds %>
-  <% @rounds.each do |round| %>
-      <%= link_to tournament_round_path(@tournament, round) do %>
-        Round <%= round.index %>
-      <% end %>
-  <% end %>
-</p>
-<br>
+  <br />
 <% if current_user == @tournament.user %>
+<%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id), :class => "btn" %>
   <%= link_to 'Edit Tournament', edit_tournament_path(@tournament), :class => "btn" %>
   <%= link_to 'Destroy', @tournament, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>

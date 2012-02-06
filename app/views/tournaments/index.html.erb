@@ -5,9 +5,9 @@
 
 
 
- <ul class="nav nav-tabs nav-stacked">
-<li><% @tournaments.each do |tournament| %>
-  
+<% @tournaments.each do |tournament| %>
+   <ul class="nav nav-tabs nav-stacked">
+   <li>
     	<%= link_to tournament do %><%= tournament.title %>, <%= tournament.start_date.inspect %>, <%= tournament.location %><% end %>
 </li>
 <% end %>

@@ -3,7 +3,7 @@
 <h1><%= @team.school %> <%= @team.teamabcd %> </h1>
 <br />
 <p>
-  <span class="identifier" id="id">Amtaid:</span>
+  <span class="identifier" id="id">AMTA Id:</span>
   <%= @team.amtaid %>
 </p>
 
@@ -35,23 +35,24 @@
 </p>
 <br />
 <p>
-    <span class="identifier" id="competitors">Competitors</span>
+    <span class="identifier" id="competitors"><strong>Competitors:</strong></span>
         <table cellpadding="10px">
           <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Team Name</th>
-            <th></th>
-            <th></th>
+            
           </tr>
     <% #FIXME use a partial to render these, later %>
         <% @team.competitors.each do |competitor| %>
           <tr>
             <td><%= link_to (competitor) do %>
-              <%= competitor.name %>
+              <strong><%= competitor.name %></strong>
               <%  end 
               %>
+              <br />
+              <%= link_to 'Edit', edit_competitor_path(competitor) %> | <%= link_to 'Remove', competitor, :confirm => 'Are you sure?', :method => :delete %>
             </td>
             <td><%= competitor.contactemail %></td>
             <td><%= competitor.contactphone %></td>
@@ -62,13 +63,11 @@
                 <%= puts "error" %>
             <% end %>
             <td></td>
-            <% #TODO: Auth: if logged in as a couch. %>
-            <td><%= link_to 'Edit', edit_competitor_path(competitor) %></td>
-            <td><%= link_to 'Destroy', competitor, :confirm => 'Are you sure?', :method => :delete %></td>
+            
           </tr>
         <% end %>
         <tr>
-            <td id="new_competitor"><%= link_to 'New Competitor', new_competitor_path( :team_id => @team.id) %></td>
+            <td id="new_competitor"><%= link_to 'New Competitor', new_competitor_path( :team_id => @team.id), :class => "btn" %></td>
         </tr>
         </table>
 </p>

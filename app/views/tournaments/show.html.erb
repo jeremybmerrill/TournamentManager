@@ -37,26 +37,24 @@
 	<% end %>
       </ul>
 </p>
-
-<p align="center">
-<a href="/teams"><img src="/images/teams.png" width="50px" height="50px"></a>
-<img src="/images/notifications.png" width="50px" height="50px">
-<a href="/"><img src="/images/home.png" width="50px" height="50px"></a>
-</p>
-
 <p>
   <span class="identifier" id="teams"><strong>Teams:</strong></span>
-  <ol>
-  <% @teams = @tournament.teams %>
-  <% @teams.each do |team| %>
+  
+  <div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    View competing teams
+    <span class="caret"></span>
+  </a>
+
+  <ul class="dropdown-menu">
+    <% @teams = @tournament.teams %>
+  	<% @teams.each do |team| %>
     <li>
-      <%= link_to(team) do %>
-        <%= team.school %> <%= team.teamabcd %>
-      <% end %>
-    </li>
-  <% end %>
-  </ol>
-  </p>
+      <%= link_to(team) do %><%= team.school %> <%= team.teamabcd %><% end %>
+    </li> 
+  	<% end %>
+  </ul>
+</div>
   <br />
 <% if current_user == @tournament.user %>
 <%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id), :class => "btn" %>

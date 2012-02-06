@@ -50,7 +50,10 @@
     <% @teams = @tournament.teams %>
   	<% @teams.each do |team| %>
     <li>
-      <%= link_to(team) do %><%= team.school %> <%= team.teamabcd %><% end %>
+    <% if current_user == @tournament.user %> <%= link_to(team) do %><%= team.school %> <%= team.teamabcd %><% end %>
+      <% else %>
+      <%= team.school %> <%= team.teamabcd %>
+      <% end %>
     </li> 
   	<% end %>
   </ul>
@@ -59,6 +62,6 @@
 <% if current_user == @tournament.user %>
 <%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id), :class => "btn" %>
   <%= link_to 'Edit Tournament', edit_tournament_path(@tournament), :class => "btn" %>
-  <%= link_to 'Destroy', @tournament, :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to 'Delete Tournament', @tournament, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
 

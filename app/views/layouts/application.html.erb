@@ -24,6 +24,8 @@
                  <li><a href="/">Home</a></li>
       <li><a href="/tournaments">Tournaments</a></li>
       <li><a href="/admin_dashboard">Admin Dashboard</a></li>
+      </ul>
+      <ul class="nav pull-right">
       <li> <% if user_signed_in? %>  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>  
       <% else %>  
         <%= link_to "Sign-In/Up", new_user_session_path %>  

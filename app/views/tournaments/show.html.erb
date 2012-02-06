@@ -28,16 +28,22 @@
   
  <% @rounds = @tournament.rounds %>
   <% @rounds.each do |round| %>
-  <ul class="nav nav-tabs nav-stacked">
-	<li>
+  <ul class="nav nav-tabs nav-stacked color">
+	<li align="center">
       <%= link_to tournament_round_path(@tournament, round) do %>
-        Round <%= round.index %>
+        <strong>Round <%= round.index %></strong>
       <% end %>
 	</li>
 	<% end %>
       </ul>
 </p>
-<br />
+
+<p align="center">
+<a href="/teams"><img src="/images/teams.png" width="50px" height="50px"></a>
+<img src="/images/notifications.png" width="50px" height="50px">
+<a href="/"><img src="/images/home.png" width="50px" height="50px"></a>
+</p>
+
 <p>
   <span class="identifier" id="teams"><strong>Teams:</strong></span>
   <ol>

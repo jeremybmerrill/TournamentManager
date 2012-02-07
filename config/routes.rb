@@ -1,14 +1,15 @@
 TournamentManager::Application.routes.draw do
 
-  resources :participants
-  resources :admin_dashboard
-
   devise_for :gods
   devise_for :users
 
   resources :competitors 
 
   resources :teams
+  
+  resources :participants
+  
+  resources :admin_dashboard
 
   resources :tournaments do
     resources :rounds do

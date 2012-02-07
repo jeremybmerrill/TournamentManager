@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Tournament:</b>
+  <strong>Tournament:</strong>
   <% @tournament = Tournament.find(@round.tournament_id) %>
   <%= link_to @tournament.title + " Round " + @round.index.to_s, @tournament %>
 </p>
 
 <p>
-  <b>Pairings</b>
-  <table>
+  <strong>Pairings:</strong>
+  <table class="table table-striped">
   <tr>
     <th><%= @tournament.translate(@tournament.type_of_competition, "Aff") %></th>
     <th></th>

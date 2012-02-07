@@ -44,10 +44,11 @@
         <%= label :name, "Competitor name" %>
         <input name="competitors[][name]" type="text"/> <%= label "captain_#{i}", "Captain?" %><%= check_box_tag "captain_#{i}" %><br />
         </div>
+        <br />
     <% end %>
-</div>
     <div class="actions">
-       <%= submit_tag( "Create" )%>
+       <%= submit_tag( "Create" ) %>
+    </div>
     </div>
 <% end %>
 

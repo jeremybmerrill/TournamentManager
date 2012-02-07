@@ -1,11 +1,14 @@
+
+
+<%= form_for @team do |team_form| %>
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#1" data-toggle="tab"><strong>Step 1:</strong> Basic information</a></li>
-    <li><a href="#2" data-toggle="tab"><strong>Step 2:</strong> Add competitors</a></li>
+    <li class="active"><a href="#1" data-toggle="tab">Step 1: Basic information</a></li>
+    <li><a href="#2" data-toggle="tab">Step 2: Competitors</a></li>
   </ul>
-  <div class="tab-content">
+
+<div class="tab-content">
     <div class="tab-pane active" id="1">
-    <%= form_for @team do |team_form| %>
     <div>
     <%= label :school, "School" %>
     <%= team_form.text_field :school %>
@@ -13,50 +16,44 @@
     <% if defined? :tournament_id %>
       <%= hidden_field_tag(:tournament_id, params[:tournament_id]) %>
     <% end %>
-    <div>
     <br />
+    <div>
     <%= label :amtaid, "AMTA Team Number" %>
     <%= team_form.text_field :amtaid %>
     </div>
-    <div>
     <br />
+    <div>
     <%= label :teamabcd, "Team A B C D" %>
     <%= team_form.text_field :teamabcd %>
     </div>
-    <div>
     <br />
+    <div>
     <%= label :contactemail, "Contact Email" %>
     <%= team_form.email_field :contactemail %>
     </div>
-    <div>
     <br />
+    <div>
     <%= label :contactphone, "Contact Phone" %>
     <%= team_form.telephone_field :contactphone %>
-    <br />
     </div>
     </div>
-    
     <div class="tab-pane" id="2">
-    <br />
     <% (1..8).each do |i| %>
+        <br />
         <div>
-       <%= label :name, "Competitor name" %>
+        <%= label :name, "Competitor name" %>
         <input name="competitors[][name]" type="text"/> <%= label "captain_#{i}", "Captain?" %><%= check_box_tag "captain_#{i}" %><br />
-       <br />
-       </div>
+        </div>
     <% end %>
-    </div>
-     
-<br />
+</div>
     <div class="actions">
-       <%= submit_tag( "Create new team" )%>
+       <%= submit_tag( "Create" )%>
     </div>
-    <% end %>
-     
+<% end %>
+
+
   </div>
 </div>
-  
-
 
 
 

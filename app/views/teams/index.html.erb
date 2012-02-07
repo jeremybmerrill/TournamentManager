@@ -27,18 +27,5 @@
 
 <%= link_to 'New Team', new_team_path, :class => "btn" %>
 
-  <span class="identifier" id="teams"><strong>Teams:</strong></span>
-  <ol>
-  <% @teams = Team.all %>
-  <% @teams.each do |team| %>
-    <li>
-      <%= link_to(team) do %>
-        <%= team.school %> <%= team.teamabcd %>
-      <% end %>
-    </li>
-  <% end %>
-  </ol>
-  </p>
-  <br />
 
 

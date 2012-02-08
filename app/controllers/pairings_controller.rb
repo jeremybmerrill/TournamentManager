@@ -64,9 +64,6 @@ class PairingsController < ApplicationController
 
     @pairing.round = @round
 
-    if aff.save and neg.save
-      @tournament.pairing_log << "Manually paired #{aff.amtaid} vs. #{neg.amtaid} at #{Time.now}."
-    end
 
     respond_to do |format|
       if @pairing.save
@@ -109,3 +106,4 @@ class PairingsController < ApplicationController
     end
   end
 end
+

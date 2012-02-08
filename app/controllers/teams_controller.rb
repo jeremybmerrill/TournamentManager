@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
     @team = Team.new(params[:team])
 
     my_competitors = params[:competitors]
-    (1..6).each do |n|
+    (1..8).each do |n|
       if params.has_key?("captain_" + n.to_s)
         my_competitors[n-1][:captain] = true;
       else

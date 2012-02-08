@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Tournament < ActiveRecord::Base
     #has_and_belongs_to_many :teams #this would allow teams to persist across time.
     # This is not desirable, since rosters and amtaid's change over a season.

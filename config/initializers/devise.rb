@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "tabroom@jeremybmerrill.com"
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -64,7 +64,7 @@ Devise.setup do |config|
   config.stretches = 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "f408ea7876f17ecf529fcjeremy1fe99ac6739bb12d73d9ce8864c7c642acfd7beb68b666661f263ac860ea943e513b677bdef9ab8ac1dc02de1486a9d6a7394"
+  # config.pepper = "130637a0732c15f503ee9aa141d173612fec8989ba9bea2ce2c3cece91ecf45c7dc6f11ffa123089180689707ccac02dbbdb62e2762f1ecba703f0e9fefa71ec"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time

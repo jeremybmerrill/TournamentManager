@@ -1,20 +1,21 @@
+/* Original CSS - not called */
 /* Layout */
 
 body{
-  background-color: gray;
+  background-image: url(http://jacinthsohi.com/images/tmbackground.png);
   margin: 0;
   padding: 0;
 }
 div#topbar{
   position: fixed;
-  height: 30px;
+  height: 50px;
   width: 100%;
   background-color: #900;
   z-index: 2;
 }
 div#usernav{
   width: 800px;
-  margin-top: 3px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   max-height: 30px;
@@ -30,7 +31,7 @@ span#sign_in{
 }
 div#container{
   padding: 15px 30px;  
-  padding-top: 35px; /* 30 pix for fixed topbar, 5 pix for spacing */
+  padding-top: 105px; /* 50 pix for fixed topbar, 40 for nav, 15 pix for spacing */
   background-color: white;
   width: 800px;
   margin-left: auto;
@@ -39,6 +40,7 @@ div#container{
   height: 100%;
   min-height: 800px;
 }
+
 
 
 
@@ -135,3 +137,63 @@ form.new_amta_ballot .failbox{
   border-color: red;
   border-width: 2px;
 }
+
+/* Old scaffolding CSS */
+
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+

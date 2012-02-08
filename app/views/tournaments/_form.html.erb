@@ -10,31 +10,36 @@
       </ul>
     </div>
   <% end %>
-
+<br />
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :start_date %><br />
+    <%= f.label :start_date %>
     <%= f.date_select :start_date, :order => [:month, :day, :year] %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :end_date %><br />
+    <%= f.label :end_date %>
     <%= f.date_select :end_date, :order => [:month, :day, :year] %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :host %><br />
+    <%= f.label :host %>
     <%= f.text_field :host %>
     <span class="example">e.g. Claremont McKenna College</span>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :location %><br />
+    <%= f.label :location %>
     <%= f.text_field :location %>
     <span class="example">e.g. Merrill Hall</span>
   </div>
+  <br />
   <div class="field">
-    <%= label_tag :rooms %><br />
+    <%= label_tag :rooms %>
     <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput1" %><span class="example">e.g. 302A</span><br />
     <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput2", :style => "display: block;" %>
     <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput3", :style => "display: block;" %>
@@ -48,16 +53,19 @@
     <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput6", :style => "display: block;" %>
     <%= text_field_tag "rooms[]", "", :class => "clonedInput", :id => "roominput6", :style => "display: block;" %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :type_of_competition %><br />
+    <%= f.label :type_of_competition %>
     <%= f.select(:type_of_competition, options_for_select([['AMTA', 'AMTA'], ['WTFA', 'WTFA'], ['OMGP', 'OMGP']])) %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :num_rounds %><br />
+    <%= f.label :num_rounds %>
     <%= f.select(:num_rounds, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],])) %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :info %><br />
+    <%= f.label :info %>
     <%= f.text_field :info %>
     <span class="example">All the useful information you can think of! Quick and tasty lunch spots, parking info, any special competitive rules...</span>
   </div>

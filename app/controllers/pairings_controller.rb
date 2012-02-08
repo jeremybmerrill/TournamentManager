@@ -112,7 +112,7 @@ end
 
 # POST /pairings
 # POST /pairings.json
-def create
+def post
     @pairings = Pairings.new(params[:pairings])
     
     respond_to do |format|

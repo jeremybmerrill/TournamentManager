@@ -22,11 +22,11 @@
   <% @round.pairings.each do |p| %>
     <% aff_string = "" %>
     <% p.affs.each do |aff| %>
-      <% aff_string += aff.school + " " + aff.teamabcd %>
+      <% aff_string += aff.amtaid %>
     <% end %>
     <% neg_string = "" %>
     <% p.negs.each do |neg| %>
-      <% neg_string += neg.school + " " + neg.teamabcd %>
+      <% neg_string += neg.amtaid %>
     <% end %>
     <tr>
       <td>

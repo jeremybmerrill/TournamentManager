@@ -64,9 +64,6 @@ class PairingsController < ApplicationController
 
     @pairing.round = @round
 
-    if aff.save and neg.save
-      @tournament.pairing_log << "Manually paired #{aff.amtaid} vs. #{neg.amtaid} at #{Time.now}."
-    end
 
     respond_to do |format|
       if @pairing.save
@@ -108,24 +105,5 @@ class PairingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-end
-
-# POST /pairings
-# POST /pairings.json
-def post
-    @pairings = Pairings.new(params[:pairings])
-    
-    respond_to do |format|
-        if @pairings.save
-            # Tell the UserMailer to send an Email to participants after save
-            UserMailer.pairings_email(@participants).deliver
-            
-            format.html { redirect_to(@pairings, :notice => 'Pairings have been sent!') }
-            format.json { render :json => @pairings, :status => :created, :location => @pairings }
-            else
-            format.html { render :action => "new" }
-            format.json { render :json => @pairings.errors, :status => :unprocessable_entity }
-        end
-    end
 end
 

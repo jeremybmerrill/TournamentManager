@@ -3,12 +3,13 @@
 <%= form_for @team do |team_form| %>
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#1" data-toggle="tab">Step 1: Basic information</a></li>
-    <li><a href="#2" data-toggle="tab">Step 2: Competitors</a></li>
+    <li class="active"><a href="#1" data-toggle="tab"><strong>Step 1:</strong> Basic information</a></li>
+    <li><a href="#2" data-toggle="tab"><strong>Step 2:</strong> Competitors</a></li>
   </ul>
 
 <div class="tab-content">
     <div class="tab-pane active" id="1">
+    <p><h3>Start with the basic information for the team, and make sure to fill in every field.</h3></p>
     <div>
     <%= label :school, "School" %>
     <%= team_form.text_field :school %>
@@ -38,6 +39,7 @@
     </div>
     </div>
     <div class="tab-pane" id="2">
+    <p><h3>Add in the first and last name for each competitor. Don't worry if you don't fill in all the competitor boxes. </h3></p>
     <% (1..8).each do |i| %>
         <br />
         <div>

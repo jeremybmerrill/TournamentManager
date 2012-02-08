@@ -1,5 +1,6 @@
 
 <h1><%= @tournament.title %></h1>
+<br>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -10,7 +11,7 @@
 </p>
 
 <p>
-  Hosted by <span id="host"><%= @tournament.host %></span> at <span id="location"><a href="http://maps.google.com/?<%= @tournament.location %>"><%= @tournament.location %></a></span>
+  Hosted by <span id="host"><%= @tournament.host %></span> at <span id="location"><a href="http://maps.google.com/maps?hl=en&q=<%= @tournament.location %>" target="_blank"><%= @tournament.location %></a></span>
 </p>
 <p>
   <span class="identifier" id="type_of_competition">Type Of Competition:</span>
@@ -19,36 +20,48 @@
 <p id="info">
   <%= @tournament.info %>
 </p>
-<p>
-  <span class="identifier" id="teams">Teams:</span>
-  <ul>
-  <% @teams = @tournament.teams %>
-  <% @teams.each do |team| %>
-    <li>
-      <%= link_to(team) do %>
-        <%= team.school %> <%= team.teamabcd %>
-      <% end %>
-    </li>
-  <% end %>
-  <li id="new_team"><%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id) %></li>
-  </ul>
-</p>
-<p>
-  <span class="identifier" id="rounds">Rounds:</span>
-  <ul>
-  <% @rounds = @tournament.rounds %>
-  <% @rounds.each do |round| %>
-    <li>
-      <%= link_to tournament_round_path(@tournament, round) do %>
-        Round <%= round.index %>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
-</p>
 
+<br>
+<p>
+  <span class="identifier" id="rounds"><strong>Pairings:</strong></span></p>
+  
+  
+ <% @rounds = @tournament.rounds %>
+  <% @rounds.each do |round| %>
+  <ul class="nav nav-tabs nav-stacked color">
+	<li align="center">
+      <%= link_to tournament_round_path(@tournament, round) do %>
+        <strong>Round <%= round.index %></strong>
+      <% end %>
+	</li>
+	<% end %>
+      </ul>
+</p>
+<p>
+  <span class="identifier" id="teams"><strong>Teams:</strong></span>
+  
+  <div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    View competing teams
+    <span class="caret"></span>
+  </a>
+
+  <ul class="dropdown-menu">
+    <% @teams = @tournament.teams %>
+  	<% @teams.each do |team| %>
+    <li>
+    <% if current_user == @tournament.user %> <%= link_to(team) do %><%= team.school %> <%= team.teamabcd %><% end %>
+      <% else %>
+      <%= team.school %> <%= team.teamabcd %>
+      <% end %>
+    </li> 
+  	<% end %>
+  </ul>
+</div>
+  <br />
 <% if current_user == @tournament.user %>
-  <%= link_to 'Edit', edit_tournament_path(@tournament) %>
-  <%= link_to 'Destroy', @tournament, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to 'New Team', new_team_path(:tournament_id => @tournament.id), :class => "btn" %>
+  <%= link_to 'Edit Tournament', edit_tournament_path(@tournament), :class => "btn" %>
+  <%= link_to 'Delete Tournament', @tournament, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
 

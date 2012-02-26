@@ -3,6 +3,6 @@ ActionMailer::Base.smtp_settings = {
   :port => '25',
   :domain => "tabroom.info",
   :authentication => :plain,
-  :user_name => "admin@tabroom.info",
-  :password => ""
+  :user_name => "app2778424@heroku.com",
+  :password => "vluvhaad"
 }

@@ -35,10 +35,10 @@ class Tournament < ActiveRecord::Base
       rounds.each do |r|
         r.pairings.each do |pairing|
           if pairing.affs.first.team == team
-            running_record =+ pairing.p_ballots
+            running_record += pairing.p_ballots
           end
           if pairing.negs.first.team == team
-            running_record =+ pairing.d_ballots
+            running_record += pairing.d_ballots
           end
         end
       end
@@ -54,7 +54,7 @@ class Tournament < ActiveRecord::Base
             running_cs =+ record(pairing.negs.first.team)
           end
           if pairing.negs.first.team == team
-            running_cs =+ record(pairing.affs.first.team)
+            running_cs += record(pairing.affs.first.team)
           end
         end
       end

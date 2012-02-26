@@ -13,8 +13,8 @@
     <th><%= @tournament.translate(@tournament.type_of_competition, "Neg") %></th>
     <th>Room</th>
     	<% if current_user == @tournament.user %>
-    <th></th>
-    <th></th>
+    <th>Ballots</th>
+    <th>Round Summary</th>
     <th></th>
     	<% else %>    <% end %>
   </tr>
@@ -40,8 +40,8 @@
       <% if current_user == @tournament.user %>
       <%= link_to 'Change', edit_tournament_round_pairing_path(@tournament, @round, p) %>
       </td>
-      <td><%= link_to 'Show Details', tournament_round_pairing_path(@round.tournament, @round, p) %></td>
       <td>   <%= link_to 'Enter Ballot', new_tournament_round_pairing_amta_ballot_path(p.round.tournament, p.round, p), :class => "btn" %> </td>
+      <td><%= link_to 'Show Details', tournament_round_pairing_path(@round.tournament, @round, p) %></td>
       <td><%= link_to('Delete Pairing', [p.round.tournament, p.round, p], 
                       :confirm => "Are you sure you want to delete this pairing? If these pairings were automatically generated, this deletion will be recorded on the pairings log.", 
                       :method => :delete)%>

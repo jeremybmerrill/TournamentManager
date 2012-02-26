@@ -42,6 +42,7 @@ class Tournament < ActiveRecord::Base
           end
         end
       end
+      return running_record
     end
     def cs(team)
       #for each round, find the team's pairing
@@ -57,8 +58,8 @@ class Tournament < ActiveRecord::Base
           end
         end
       end
+      return running_cs
     end
-
     def ocs(team)
         
     end

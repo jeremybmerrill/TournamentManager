@@ -41,10 +41,14 @@ class AmtaBallotsController < ApplicationController
   # POST /amta_ballots.xml
   def create
     @amta_ballot = AmtaBallot.new(params[:amta_ballot])
+    @pairing = Pairing.find(params[:pairing_id])
+    @pairing.amta_ballots << @amta_ballot
+    @round = Round.find(params[:round_id])
+    @tournament = Tournament.find(params[:tournament_id])
 
     respond_to do |format|
       if @amta_ballot.save
-        format.html { redirect_to(@amta_ballot, :notice => 'Amta ballot was successfully created.') }
+        format.html { redirect_to( tournament_round_path(@tournament, @round), :notice => 'Amta ballot was successfully created.') }
         format.xml  { render :xml => @amta_ballot, :status => :created, :location => @amta_ballot }
       else
         format.html { render :action => "new" }

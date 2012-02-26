@@ -45,13 +45,13 @@ class Tournament < ActiveRecord::Base
       return running_record
     end
     def cs(team)
-      #for each round, find the team's pairing
+      #for each round, find the team's opponent
       #sum up that team's p_ballots or d_ballots
       running_cs = 0
       rounds.each do |r|
         r.pairings.each do |pairing|
           if pairing.affs.first.team == team
-            running_cs =+ record(pairing.negs.first.team)
+            running_cs += record(pairing.negs.first.team)
           end
           if pairing.negs.first.team == team
             running_cs += record(pairing.affs.first.team)

@@ -2,6 +2,8 @@ TournamentManager::Application.routes.draw do
 
   devise_for :gods
   devise_for :users
+  
+  match "/tournaments/:id" => "tournaments#show"
 
   resources :competitors 
 

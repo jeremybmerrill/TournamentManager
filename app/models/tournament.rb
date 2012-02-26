@@ -28,6 +28,42 @@ class Tournament < ActiveRecord::Base
     #also has info, URLs to packet pdf, map pdf, Google MyMaps?,
     #if we add ads, relationship to ads
 
+    def record(team)
+      #for each round, find the team's pairing and whether it was aff/neg
+      #sum up the p_ballots or d_ballots
+      running_record = 0
+      rounds.each do |r|
+        r.pairings.each do |pairing|
+          if pairing.affs.first.team == team
+            running_record =+ pairing.p_ballots
+          end
+          if pairing.negs.first.team == team
+            running_record =+ pairing.d_ballots
+          end
+        end
+      end
+    end
+    def cs(team)
+      #for each round, find the team's pairing
+      #sum up that team's p_ballots or d_ballots
+      running_cs = 0
+      rounds.each do |r|
+        r.pairings.each do |pairing|
+          if pairing.affs.first.team == team
+            running_cs =+ record(pairing.negs.first.team)
+          end
+          if pairing.negs.first.team == team
+            running_cs =+ record(pairing.affs.first.team)
+          end
+        end
+      end
+    end
+
+    def ocs(team)
+        
+    end
+
+
     def translate(type, string)
       tournament_format_strings = Hash.new
       amta_strings = Hash.new

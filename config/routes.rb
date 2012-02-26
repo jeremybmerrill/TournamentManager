@@ -29,7 +29,7 @@ TournamentManager::Application.routes.draw do
 end
 
 
-  root :to => "tournaments#index"
+  root :to => "home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

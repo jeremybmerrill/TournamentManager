@@ -3,8 +3,6 @@ TournamentManager::Application.routes.draw do
   devise_for :gods
   devise_for :users
   
-  match "/tournaments/:id" => "tournaments#show"
-
   resources :competitors 
 
   resources :teams
@@ -23,6 +21,12 @@ TournamentManager::Application.routes.draw do
       end
     end
   end
+  
+  resources :teams do
+  member do
+    post 'addToTournament'
+  end
+end
 
 
   root :to => "home#index"

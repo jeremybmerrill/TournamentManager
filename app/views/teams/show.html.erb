@@ -32,7 +32,7 @@
     <% end %>
   <% end %>
   
-  <%= form_tag(@tournaments) do %>
+  <%= form_tag(:controller => "teams", :action => "addToTournament", :method => "post") do %>
   <div class="field">
     <%= label_tag :tournament_id, "Add to a tournament" %>
     

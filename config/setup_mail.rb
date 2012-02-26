@@ -4,5 +4,5 @@ ActionMailer::Base.smtp_settings = {
   :domain => "tabroom.info",
   :authentication => :plain,
   :user_name => "app2778424@heroku.com",
-  :password => "vluvhaad"
+  :password => ""
 }

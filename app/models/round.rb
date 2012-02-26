@@ -50,11 +50,55 @@ class Round < ActiveRecord::Base
           end
           pairing.save
         end
-      #else if round_index == 2
+      elsif round_index == 2
+        #separate into two arrays, needstobeP and needstobeD
+        needsToBePlaintiff = [] #teams that were just Defense
+        needsToBeDefense = []
+        tournament.rounds.where("index" => round_index - 1)[0].pairings.each do |pairing|
+          needsTobePlaintiff << pairing.negs[0]
+          needsTobeDefense << pairing.affs[0]
+        end
 
-      #else if round_index == 3
+        #sort by record, point diff
+        #needsToBePlaintiff.sort {|teamOne,teamTwo| 
+        #  comp = (teamOne.pairing.d_ballots <=>  teamTwo.pairing.d_ballots)  #teamOne's round-1-pairing's won-ballots
+        #  comp.zero? ? (-teamOne.pairing.point_differential <=>  -teamTwo.pairing.point_differential) : comp
+        #}
+        #needsToBeDefense.sort {|teamOne,teamTwo| 
+        #  comp = (teamOne.pairing.p_ballots <=>  teamTwo.pairing.p_ballots)  #teamOne's round-1-pairing's won-ballots
+        #  comp.zero? ? (teamOne.pairing.point_differential <=>  teamTwo.pairing.point_differential) : comp
+        #}
+        needsToBePlaintiff.sort {|team| [team.pairing.d_ballots, -team.pairing.point_differential]}
+        needsToBeDefense.sort {|team| [team.pairing.p_ballots, team.pairing.point_differential]}
+        
+        #TODO: Is there a bye team? If so, move them to the bottom of their bracket.
+        pairings = []
+        def doPair(needsToBePlaintiff, needsToBeDefense)
+          proposed_pairings = []
+          (1..needsToBeDefense.length).each do |i|
+            proposed_pairings << [needsToBePlaintiff[i], needsToBeDefense[i]]
+          end
+          return proposed_pairings
+        end
+        def hasImpermissibles(proposed_pairings)
+          return false #TODO remove this (just for debug
+          proposed_pairings.each do |pairing|
+            return true if (pairing[0].school == pairing[1].school) || ()
+          end
+          return nil
+        end
+        #any same school or same-two-teams impermissibles
 
-      #else if round_index == 4
+        while hasImpermissibles(doPair(needsToBePlaintiff, needsToBeDefense))
+          #fix impermissibles
+          pairings = doPair(needsToBePlaintiff, needsToBeDefense)
+        end
+        
+        #TODO move the pairings elements to Team from Aff/Neg
+        return pairings
+      #elsif round_index == 3
+
+      #elsif round_index == 4
         
       end
     #else if type == "WTFQ"

@@ -1,7 +1,7 @@
 <% tournament = Tournament.find(params[:tournament_id]) %>
 <% round = Round.find(params[:round_id]) %>
 <% pairing = Pairing.find(params[:pairing_id]) %>
-<%= form_for([tournament, round, pairing, @amta_ballot]) do |f| %>
+<%= form_for([tournament, round, pairing, @amta_ballot], :html => {:class => "amta_ballot_form"}) do |f| %>
   <% if @amta_ballot.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@amta_ballot.errors.count, "error") %> prohibited this amta_ballot from being saved:</h2>
@@ -164,7 +164,7 @@
   <% end %>
 
   <div class="holder" id="ranks" >
-    <span class="attyrank attyrank_label">Attorney Ranks</span>
+    <h3 class="attyrank attyrank_label">Attorney Ranks</h3>
     <div class="field attyrank attyrank_1">
       <%= f.label :atty_rank_1, "1. " %>
       <%= f.select(:atty_rank_1, options_for_select(competitor_select)) %>
@@ -181,7 +181,7 @@
       <%= f.label :atty_rank_4, "4. " %>
       <%= f.select(:atty_rank_4, options_for_select(competitor_select)) %>
     </div>
-    <span class="witrank witrank_label">Witness Ranks</span>
+    <h3 class="witrank witrank_label">Witness Ranks</h3>
     <div class="witrank field witrank_1">
       <%= f.label :witness_rank_1, "1. " %>
       <%= f.select(:witness_rank_1, options_for_select(competitor_select)) %>

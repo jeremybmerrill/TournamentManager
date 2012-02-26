@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 <h1><%= link_to(@pairing.round.tournament.title, @pairing.round.tournament) %></h1>
 
 <p id="notice"><%= notice %></p>
@@ -10,7 +12,14 @@
   <b>Room:</b>
   <%= @pairing.room %> <%= link_to 'Edit', edit_tournament_round_pairing_path(@pairing.round.tournament, @pairing.round, @pairing) %>
 </p>
-
+<ul id="ballots">
+    <% @pairing.amta_ballots.each do |b| %>
+        <% pdsymbol = "π" if b.point_differential > 0 %>
+        <% pdsymbol = "Δ" if b.point_differential < 0 %>
+        <% pdsymbol = "T" if b.point_differential == 0 %> 
+        <li><%= pdsymbol %> wins by <%= b.point_differential.abs %>, <%= link_to 'Show', tournament_round_pairing_amta_ballot_path(@pairing.round.tournament, @pairing.round, @pairing, b) %></li>
+    <% end %>
+</ul>
 <p>
   <%= link_to 'Enter Ballot', new_tournament_round_pairing_amta_ballot_path(@pairing.round.tournament, @pairing.round, @pairing), :class => "btn" %>
 </p>

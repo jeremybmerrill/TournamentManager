@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Round:</b>
-  <%= @amta_ballot.round_id %>
+  <%= @amta_ballot.pairing.round_id %>
 </p>
 
 <p>
@@ -156,5 +154,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_amta_ballot_path(@amta_ballot) %> |
-<%= link_to 'Back', amta_ballots_path %>
+<%= link_to 'Edit', edit_tournament_round_pairing_amta_ballot_path(@amta_ballot.pairing.round.tournament, @amta_ballot.pairing.round, @amta_ballot.pairing, @amta_ballot) %> |
+<%= link_to 'Back', tournament_round_pairing_path(@amta_ballot.pairing.round.tournament, @amta_ballot.pairing.round, @amta_ballot.pairing) %>

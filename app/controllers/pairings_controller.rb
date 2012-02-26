@@ -53,10 +53,12 @@ class PairingsController < ApplicationController
     neg = @pairing.negs.build
   
     aff.team = Team.find(params[:aff_id])
-    @pairing.affs << aff
+    aff.pairing = @pairing
+    @pairing.affs << aff if !@pairing.affs.include?(aff)
 
     neg.team = Team.find(params[:neg_id])
-    @pairing.negs << neg
+    neg.pairing = @pairing
+    @pairing.negs << neg if !@pairing.negs.include?(neg)
 
 
     @round = Round.find(params[:round_id])

@@ -2,7 +2,7 @@ TournamentManager::Application.routes.draw do
 
   devise_for :gods
   devise_for :users
-
+  
   resources :competitors 
 
   resources :teams
@@ -21,6 +21,12 @@ TournamentManager::Application.routes.draw do
       end
     end
   end
+  
+  resources :teams do
+  member do
+    post 'addToTournament'
+  end
+end
 
 
   root :to => "tournaments#index"

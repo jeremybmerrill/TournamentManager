@@ -3,12 +3,13 @@
 <%= form_for @team do |team_form| %>
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#1" data-toggle="tab">Step 1: Basic information</a></li>
-    <li><a href="#2" data-toggle="tab">Step 2: Competitors</a></li>
+    <li class="active"><a href="#stepone" data-toggle="tab"><strong>Step 1:</strong> Basic information</a></li>
+    <li><a href="#steptwo" data-toggle="tab"><strong>Step 2:</strong> Competitors</a></li>
   </ul>
 
 <div class="tab-content">
-    <div class="tab-pane active" id="1">
+    <div class="tab-pane active" id="stepone">
+    <p><h3>Start with the basic information for the team, and make sure to fill in every field.</h3></p>
     <div>
     <%= label :school, "School" %>
     <%= team_form.text_field :school %>
@@ -35,9 +36,26 @@
     <div>
     <%= label :contactphone, "Contact Phone" %>
     <%= team_form.telephone_field :contactphone %>
+    </div>   
+    <br />
+    
+    <script>
+function nextTab(elem) {
+  jQuery(elem + ' li.active')
+    .next()
+    .find('a[data-toggle="tab"]')
+    .click();
+}
+   </script> 
+    
+    
+<a href="#steptwo" class="btn btn-primary" onclick="nextTab('ul.nav-tabs')">Add Competitors</a>
+    
     </div>
-    </div>
-    <div class="tab-pane" id="2">
+    
+    
+    <div class="tab-pane" id="steptwo">
+    <p><h3>Add in the first and last name for each competitor. Don't worry if you don't fill in all the competitor boxes. </h3></p>
     <% (1..8).each do |i| %>
         <br />
         <div>
@@ -47,14 +65,16 @@
         <br />
     <% end %>
     <div class="actions">
-       <%= submit_tag( "Create" ) %>
+       <%= submit_tag( "Create" ) %> 
     </div>
-    </div>
+    <div>
+            <a href="#" rel="popover" title="Check Step 1" data-content="Make sure that you filled in all the fields in Step 1, then click Create again.">Not saving?</a>
+          </div>
 <% end %>
 
 
   </div>
 </div>
-
-
+<br />
+<br />
 

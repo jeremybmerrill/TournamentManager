@@ -1,21 +1,21 @@
 <h1><%= @team.school %> <%= @team.teamabcd %> </h1>
 <br />
 <p>
-  <span class="identifier" id="id">AMTA Team Number:</span>
+  <span class="identifier" id="id"><strong>AMTA Team Number:</strong></span>
   <%= @team.amtaid %>
 </p>
 
 <p>
-  <span class="identifier" id="email">Contact Email:</span>
+  <span class="identifier" id="email"><strong>Contact Email:</strong></span>
   <%= @team.contactemail %>
 </p>
 
 <p>
-  <span class="identifier" id="phone">Contact Phone:</span>
+  <span class="identifier" id="phone"><strong>Contact Phone:</strong></span>
   <%= @team.contactphone %>
 </p>
 <p>
-  <span class="identifier" id="upcoming_tournaments">Upcoming Tournaments:</span>
+  <span class="identifier" id="upcoming_tournaments"><strong>Upcoming Tournaments:</strong></span>
   </p>
   <p>
   <% @tournaments = @team.tournaments %>
@@ -29,6 +29,19 @@
       
     <% end %>
   <% end %>
+  
+  <%= form_tag(:controller => "teams", :action => "addToTournament", :method => "post") do %>
+  <div class="field">
+    <%= label_tag :tournament_id, "Add to a tournament" %>
+    
+    <% tournament_select = [['','']] %>
+    <% Tournament.all.each do |t| %>
+    <% tournament_select << [t.title, t.id] %>
+    <% end %>
+    <%= select_tag(:tournament_id, options_for_select(tournament_select)) %>
+  </div>
+  <div><%= submit_tag 'Save' %></div>
+<% end %>
   
 </p>
 <br />
@@ -66,6 +79,7 @@
         <% end %>
         <tr>
             <td id="new_competitor"><%= link_to 'New Competitor', new_competitor_path( :team_id => @team.id), :class => "btn" %></td>
+            <td id="new_team"><%= link_to 'New Team', new_team_path, :class => "btn" %></td>
         </tr>
         </table>
 </p>

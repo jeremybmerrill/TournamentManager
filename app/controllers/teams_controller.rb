@@ -72,6 +72,23 @@ class TeamsController < ApplicationController
     end
   end
 
+
+# POST /addToTournament
+  # POST /addToTournament.xml
+  def addToTournament
+    #create competitors too
+    @tournament = Tournament.find(params[:tournament_id])
+	@team = Team.find(params[:id])
+	
+	@tournament.teams << @team 
+	
+    respond_to do |format|
+        format.html { redirect_to(@tournament, :notice => 'Team was successfully added to the tournament.') }
+        format.xml  { render :xml => @tournament, :status => :created, :location => @tournament }
+    end
+  end
+
+
   # PUT /teams/1
   # PUT /teams/1.xml
   def update
@@ -100,3 +117,5 @@ class TeamsController < ApplicationController
     end
   end
 end
+
+

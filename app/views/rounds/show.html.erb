@@ -6,7 +6,7 @@
 
 <p>
   <strong>Pairings:</strong>
-  <table class="table table-striped">
+  <table class="table table-striped" cellspacing="10px" cellpadding="10px">
   <tr>
     <th><%= @tournament.translate(@tournament.type_of_competition, "Aff") %></th>
     <th></th>
@@ -28,14 +28,14 @@
       <% neg_string += neg.amtaid %>
     <% end %>
     <tr>
-      <td>
+      <td align="center">
       <%= aff_string %>
       </td>
-      <td> vs. </td>
+      <td align="center"> vs. </td>
       <td>
       <%= neg_string %>
       </td>
-      <td>
+      <td align="center">
       <%= (p.room or " " ) %>
       <% if current_user == @tournament.user %>
       <%= link_to 'Change', edit_tournament_round_pairing_path(@tournament, @round, p) %>

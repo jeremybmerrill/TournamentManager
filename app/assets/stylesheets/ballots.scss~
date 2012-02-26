@@ -1,0 +1,94 @@
+ /* ballot styles & positioning*/
+form.amta_ballot_form{
+  width: 100%;
+  position: relative;
+}
+form.amta_ballot_form .holder{
+  width: 80%;
+  position: relative;
+  height: 30px;
+}
+
+form.amta_ballot_form #p_amtaid, form.amta_ballot_form #d_amtaid{
+    font-size: 18px;
+}
+form.amta_ballot_form div.holder.witness{
+  height: 90px;
+  margin: 15px 0px;
+}
+form.amta_ballot_form .holder div.field{
+  width: 30%;
+}
+form.amta_ballot_form div.p{
+  left: 10%;
+  position: absolute;
+}
+form.amta_ballot_form div.d{
+  left: 60%;
+  position: absolute;
+}
+form.amta_ballot_form div.witnessdx{
+  top: 35%
+}
+form.amta_ballot_form div.witnesscx{
+  top: 70%
+}
+form.amta_ballot_form div#ranks{
+  height: 180px;
+}
+form.amta_ballot_form div.attyrank{
+  left: 10%;
+  position: absolute;
+}
+form.amta_ballot_form div.witrank{
+  left: 60%;
+  position: absolute;
+}
+form.amta_ballot_form h3.attyrank_label{ top: 0%; left: 18%; position: absolute;}
+form.amta_ballot_form h3.witrank_label{ top: 0%; left: 68%; position: absolute;}
+form.amta_ballot_form div.attyrank_1{ top: 20%; }
+form.amta_ballot_form div.witrank_1{ top: 20%; }
+form.amta_ballot_form div.attyrank_2{ top: 40%; }
+form.amta_ballot_form div.witrank_2{ top: 40%; }
+form.amta_ballot_form div.attyrank_3{ top: 60%; }
+form.amta_ballot_form div.witrank_3{ top: 60%; }
+form.amta_ballot_form div.attyrank_4{ top: 80%; }
+form.amta_ballot_form div.witrank_4{ top: 80%; }
+form.amta_ballot_form div.score label {
+  position: absolute;
+}
+form.amta_ballot_form div.attyrank label{
+  position: absolute;
+  padding-top: 2%;
+}
+form.amta_ballot_form div.witrank label {
+  position: absolute;
+  padding-top: 2%;
+}
+
+form.amta_ballot_form div.attyrank select, form.amta_ballot_form div.witrank select{
+  position: absolute;
+  left: 20px;
+}
+
+form.amta_ballot_form div.score input[type="text"] {
+  width: 48px;
+  position: absolute;
+}
+form.amta_ballot_form div.score input[type="text"] {
+  left: 60%;
+}
+
+form.amta_ballot_form div#wit_rank{
+  /* margin-left: 15%; */
+}
+form.amta_ballot_form div.actions{
+  width: 100%;
+  margin-top: 2%;
+  margin-left: 10%;
+}
+form.amta_ballot_form .failbox{
+  border-style: inset;
+  border-color: red;
+  border-width: 2px;
+}

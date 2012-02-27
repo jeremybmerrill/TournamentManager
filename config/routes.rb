@@ -10,6 +10,8 @@ TournamentManager::Application.routes.draw do
   resources :participants
   
   resources :admin_dashboard
+  
+  resources :contact
 
   resources :tournaments do
     resources :rounds do

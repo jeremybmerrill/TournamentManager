@@ -28,6 +28,12 @@ TournamentManager::Application.routes.draw do
   end
 end
 
+resources :teams do
+  member do
+    post 'removeFromTournament'
+  end
+end
+
 
   root :to => "home#index"
 

@@ -122,10 +122,10 @@ class TeamsController < ApplicationController
   def removeFromTournament
     @tournament = Tournament.find(params[:tournament_id])
    	@team = Team.find(params[:id])
-   	@tournament.teams.delete(team)
+   	@tournament.teams.delete(@team)
 	
     respond_to do |format|
-      format.html { redirect_to(tournaments_url(@tournament)) }
+      format.html { redirect_to(tournament_path(@tournament)) }
       format.xml  { head :ok }
     end
   end

@@ -22,7 +22,7 @@ class Round < ActiveRecord::Base
 #  AUTOPAIR and helper methods
 #
 ############################
-
+=begin
   def doPair(needsToBePlaintiff, needsToBeDefense)
     proposed_pairings = []
     (1..needsToBeDefense.length).each do |i|
@@ -42,7 +42,7 @@ class Round < ActiveRecord::Base
     return false
   end
 
-  comparison_methods = [record, cs, point_differential]
+  comparison_methods = []
   def findSwitchCandidate(comparison_method, candidates, needsToBeDefense, needsToBePlaintiff) #only valid for round 2
     closest_value = 10000 # a really big number (no team's Record, CS or Point_Differential will ever differ by more than 10000)
     to_be_switched = []
@@ -152,7 +152,7 @@ class Round < ActiveRecord::Base
           #fix impermissibles
           impermissible_index = hasImpermissibles(doPair(needsToBePlaintiff, needsToBeDefense))
           #find neighboring team with least-different record; if >1: neighboring team with least-different CS; if >1 (or round 2), neighboring team with least diff point differential
-          @pairing_log << ("Found impermissible: " + needsToBePlaintiff[impermissible_index].team.amtaid + " cannot face " needsToBeDefense[impermissible_index])
+          @pairing_log << ("Found impermissible: " + needsToBePlaintiff[impermissible_index].team.amtaid + " cannot face " + needsToBeDefense[impermissible_index])
 
 
           switch_set = Set.new()
@@ -186,7 +186,7 @@ class Round < ActiveRecord::Base
     #else if type == "WTFQ"
       
     end
-    tournament.@pairing_log << @pairing_log
     return true unless false #TODO: unless things failed above
   end
+=end
 end

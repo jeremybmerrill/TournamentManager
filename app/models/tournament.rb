@@ -28,6 +28,72 @@ class Tournament < ActiveRecord::Base
     #also has info, URLs to packet pdf, map pdf, Google MyMaps?,
     #if we add ads, relationship to ads
 
+    def record(team)
+      #for each round, find the team's pairing and whether it was aff/neg
+      #sum up the p_ballots or d_ballots
+      running_record = 0
+      rounds.each do |r|
+        r.pairings.each do |pairing|
+          if pairing.affs.first.team == team #if team was P on that pairing
+            running_record += pairing.p_ballots #add up P's ballots
+          end
+          if pairing.negs.first.team == team #if team was D on that pairing
+            running_record += pairing.d_ballots
+          end
+        end
+      end
+      return running_record
+    end
+    def cs(team)
+      #for each round, find the team's opponent
+      #sum up that team's p_ballots or d_ballots
+      running_cs = 0
+      rounds.each do |r|
+        r.pairings.each do |pairing|
+          if pairing.affs.first.team == team #if team was P on that pairing
+            running_cs += record(pairing.negs.first.team) #add up D's record
+          end
+          if pairing.negs.first.team == team
+            running_cs += record(pairing.affs.first.team)
+          end
+        end
+      end
+      return running_cs
+    end
+
+    def ocs(team)
+      running_ocs = 0
+      rounds.each do |r|
+        r.pairings.each do |pairing|
+          if pairing.affs.first.team == team #if team was P on that pairing
+            running_ocs += cs(pairing.negs.first.team) #add up D's CS
+          end
+          if pairing.negs.first.team == team
+            running_ocs += cs(pairing.affs.first.team)
+          end
+        end
+      end
+      return running_cs
+    end
+
+    def point_differential(team)
+      #for each round, find the team's opponent
+      #sum up that team's p_ballots or d_ballots
+      running_point_differential = 0
+      rounds.each do |r|
+        r.pairings.each do |pairing|
+          if pairing.affs.first.team == team #if team was P on this pairing
+            running_cs += pairing.point_differential #add up their point_diff
+          end
+          if pairing.negs.first.team == team
+            running_cs += -pairing.point_differential
+          end
+        end
+      end
+      return running_cs
+    end
+
+
     def translate(type, string)
       tournament_format_strings = Hash.new
       amta_strings = Hash.new

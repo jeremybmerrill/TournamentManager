@@ -5,7 +5,8 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.xml
   def index
-    @teams = Team.all(:order => 'school')
+    @teams = Team.all(:order => "school")
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @teams }
@@ -115,6 +116,22 @@ class TeamsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+# DELETE /removeFromTournament
+  # DELETE /removeFromTournament.xml
+  def removeFromTournament
+    @tournament = Tournament.find(params[:tournament_id])
+   	@team = Team.find(params[:id])
+   	@tournament.teams.delete(@team)
+	
+    respond_to do |format|
+      format.html { redirect_to(tournament_path(@tournament)) }
+      format.xml  { head :ok }
+    end
+  end
 end
+
+
+
 
 

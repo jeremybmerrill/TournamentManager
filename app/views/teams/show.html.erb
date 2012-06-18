@@ -93,10 +93,18 @@
         <%= @tournament.title %>
       <% end %>
         on <%= @tournament.start_date.inspect %>
+        
+        <%= link_to 'Remove from tournament', {:controller => "teams", :action => "removeFromTournament", :tournament_id => @tournament.id}, :confirm => 'Are you sure?', :method => :post, :class => "btn" %>
+        
       </li>
+      
     <% end %>
+    
   <% end %>
+  
 </p>
+
+
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

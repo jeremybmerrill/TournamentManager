@@ -22,7 +22,6 @@ class Round < ActiveRecord::Base
 #  AUTOPAIR and helper methods
 #
 ############################
-=begin
   def doPair(needsToBePlaintiff, needsToBeDefense)
     proposed_pairings = []
     (1..needsToBeDefense.length).each do |i|
@@ -101,12 +100,13 @@ class Round < ActiveRecord::Base
     pairerslist = [] #an array of two-element sets that have been swapped this round
 
     @pairing_log = ["Now pairing round #{round_index} in #{tournament.title} at #{Time.now}."]
-
+    if round.pairings.size > 0 #No autopairing if pairs already existin this round.
+      return false
+    end
     pairings = Array.new
     (1..(teams.size/2)).each do #create a bunch of empty pairings (1/2 as many pairings as teams)
       pairings << Pairing.new
     end
-  
     if type == "AMTA"
       # create n/2 pairings
       # assign teams to them based on the type of tournament, round index   
@@ -118,14 +118,14 @@ class Round < ActiveRecord::Base
           pairing.round = round
           aff = pairing.affs.build
           neg = pairing.negs.build
-          aff.team = teams.pop.id
-          neg.team = teams.pop.id     
-          pairing.aff << aff
-          pairing.neg << neg
+          aff.team = teams.pop
+          neg.team = teams.pop     
+          pairing.affs << aff
+          pairing.negs << neg
           if aff.save and neg.save
             @pairing_log << "Automatically paired #{aff.amtaid} vs. #{neg.amtaid}."
           end
-          if pairings.size <= tournament.rooms.size
+          if tournament.rooms && pairings.size <= tournament.rooms.size
             #assign the rooms
           end
           pairing.save
@@ -188,5 +188,4 @@ class Round < ActiveRecord::Base
     end
     return true unless false #TODO: unless things failed above
   end
-=end
 end

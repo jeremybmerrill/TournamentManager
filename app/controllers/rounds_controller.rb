@@ -85,23 +85,22 @@ class RoundsController < ApplicationController
   end
 
   def autopair
-
+    @round = Round.find(params[:id])
+    tournament = @round.tournament
     if @round.tournament.user == current_user
-      @round = Round.find(params[:id])
-      tournament = @round.tournament
       if @round.autopair(tournament.type_of_competition, @round)
         respond_to do |format|
-          format.html { redirect_to(@round, :notice => 'Pairings successfully generated!.') }
+          format.html { redirect_to([tournament, @round], :notice => 'Pairings successfully generated!.') }
         end
       else
         respond_to do |format|
-          format.html { redirect_to(@round, :notice => 'Pairings were not generated.') } #Also show manual pairings?
+          format.html { redirect_to([tournament, @round], :notice => 'Pairings were not generated.') } #Also show manual pairings?
         end
       end
     else
-        respond_to do |format|
-          format.html { redirect_to(@round, :notice => 'You must be this tournament\'s owner to generate pairings!') } #Also show manual pairings?
-        end      
+      respond_to do |format|
+        format.html { redirect_to([tournament, @round], :notice => 'You must be this tournament\'s owner to generate pairings!') } #Also show manual pairings?
+      end      
     end
   end
 end

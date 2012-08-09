@@ -131,6 +131,7 @@ class Round < ActiveRecord::Base
           if tournament.rooms && pairings.size <= tournament.rooms.size
             #assign the rooms
           end
+          pairing.round.tournament.pairing_log += @pairing_log
           pairing.save
         end
 
@@ -193,6 +194,9 @@ class Round < ActiveRecord::Base
           if tournament.rooms && pairings.size <= tournament.rooms.size
             #assign the rooms
           end
+          @pairing_log << ""
+          round.tournament.pairing_log = pairing.round.tournament.pairing_log ? pairing.round.tournament.pairing_log + @pairing_log : @pairing_log
+          round.tournament.save
           pairing.save
         end
       elsif round_index == 3

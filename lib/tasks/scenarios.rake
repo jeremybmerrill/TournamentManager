@@ -73,44 +73,48 @@ namespace :scenarios do
     round_id = ARGV[1]
     round = Round.find(round_id)
     round.pairings.each do |p|
-      p.p_open = rand(1..10)
-
-      p.p_open = rand(1..10)
-      p.d_open = rand(1..10)
-      p.p_witness_1 = rand(1..10)
-      p.p_dx_1 = rand(1..10)
-      p.d_cx_1 = rand(1..10)
-      p.p_witness_2 = rand(1..10)
-      p.p_dx_2 = rand(1..10)
-      p.d_cx_2 = rand(1..10)
-      p.p_witness_3 = rand(1..10)
-      p.p_dx_3 = rand(1..10)
-      p.d_cx_3 = rand(1..10)
-      p.d_witness_1 = rand(1..10)
-      p.d_dx_1 = rand(1..10)
-      p.p_cx_1 = rand(1..10)
-      p.d_witness_2 = rand(1..10)
-      p.d_dx_2 = rand(1..10)
-      p.p_cx_2 = rand(1..10)
-      p.d_witness_3 = rand(1..10)
-      p.d_dx_3 = rand(1..10)
-      p.p_cx_3 = rand(1..10)
-      p.p_close = rand(1..10)
-      p.d_close = rand(1..10)
-      p.atty_rank_1 = 4
-      p.atty_rank_2 = 3
-      p.atty_rank_3 = 2
-      p.atty_rank_4 = 1
-      p.witness_rank_1 = 1
-      p.witness_rank_2 = 2
-      p.witness_rank_3 = 3
-      p.witness_rank_4 = 4
-      p.p_witness_1_cx = rand(1..10)
-      p.p_witness_2_cx = rand(1..10)
-      p.p_witness_3_cx = rand(1..10)
-      p.d_witness_1_cx = rand(1..10)
-      p.d_witness_2_cx = rand(1..10)
-      p.d_witness_3_cx = rand(1..10)
+      [0..1].each do |i|
+        ab = AmtaBallot.new
+        p.amta_ballots << ab
+        ab.p_open = rand(1..10)
+        ab.p_open = rand(1..10)
+        ab.d_open = rand(1..10)
+        ab.p_witness_1 = rand(1..10)
+        ab.p_dx_1 = rand(1..10)
+        ab.d_cx_1 = rand(1..10)
+        ab.p_witness_2 = rand(1..10)
+        ab.p_dx_2 = rand(1..10)
+        ab.d_cx_2 = rand(1..10)
+        ab.p_witness_3 = rand(1..10)
+        ab.p_dx_3 = rand(1..10)
+        ab.d_cx_3 = rand(1..10)
+        ab.d_witness_1 = rand(1..10)
+        ab.d_dx_1 = rand(1..10)
+        ab.p_cx_1 = rand(1..10)
+        ab.d_witness_2 = rand(1..10)
+        ab.d_dx_2 = rand(1..10)
+        ab.p_cx_2 = rand(1..10)
+        ab.d_witness_3 = rand(1..10)
+        ab.d_dx_3 = rand(1..10)
+        ab.p_cx_3 = rand(1..10)
+        ab.p_close = rand(1..10)
+        ab.d_close = rand(1..10)
+        ab.atty_rank_1 = 4
+        ab.atty_rank_2 = 3
+        ab.atty_rank_3 = 2
+        ab.atty_rank_4 = 1
+        ab.witness_rank_1 = 1
+        ab.witness_rank_2 = 2
+        ab.witness_rank_3 = 3
+        ab.witness_rank_4 = 4
+        ab.p_witness_1_cx = rand(1..10)
+        ab.p_witness_2_cx = rand(1..10)
+        ab.p_witness_3_cx = rand(1..10)
+        ab.d_witness_1_cx = rand(1..10)
+        ab.d_witness_2_cx = rand(1..10)
+        ab.d_witness_3_cx = rand(1..10)
+        ab.save
+      end
     end
   end
 end

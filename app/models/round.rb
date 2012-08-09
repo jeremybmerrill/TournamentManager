@@ -24,16 +24,19 @@ class Round < ActiveRecord::Base
 ############################
   def doPair(needsToBePlaintiff, needsToBeDefense)
     proposed_pairings = []
-    (1..needsToBeDefense.length).each do |i|
+    (1...needsToBeDefense.length).each do |i|
       proposed_pairings << [needsToBePlaintiff[i], needsToBeDefense[i]]
     end
     return proposed_pairings
   end
 
   def hasImpermissibles(proposed_pairings)
-    proposed_pairings.each_index do |pairing_index|
+    proposed_pairings.each_with_index do |pairing, pairing_index|
+      if pairing == [nil, nil]
+        next
+      end
       @pairing_log << "Impermissible found!"
-      return pairing_index if (proposed_pairings[pairing_index][0].school == proposed_pairings[pairing_index][1].school) || ()
+      return pairing_index if (pairing[0].school == pairing[1].school) || ()
       #                     same school impermissible                                                                       already faced each other impermissible
       #TODO write already-faced-each-other impermissible
     end
@@ -136,21 +139,21 @@ class Round < ActiveRecord::Base
         needsToBePlaintiff = [] #teams that were just Defense
         needsToBeDefense = []
         tournament.rounds.where("index" => round_index - 1)[0].pairings.each do |pairing|
-          needsTobePlaintiff << pairing.negs[0]
-          needsTobeDefense << pairing.affs[0]
+          needsToBePlaintiff << pairing.negs[0]
+          needsToBeDefense << pairing.affs[0]
         end
 
         #sort by record, point diff
-        needsToBePlaintiff.sort {|team| [team.pairing.d_ballots, -team.pairing.point_differential]} #for defense teams, a more negative point differential means that team did better.
-        needsToBeDefense.sort {|team| [team.pairing.p_ballots, team.pairing.point_differential]}
+        needsToBePlaintiff.sort_by {|team| [team.pairing.d_ballots, -team.pairing.point_differential]} #for defense teams, a more negative point differential means that team did better.
+        needsToBeDefense.sort_by {|team| [team.pairing.p_ballots, team.pairing.point_differential]}
         
         #TODO: Is there a bye team? If so, move them to the bottom of their bracket.
-        pairings = []
+        proposedPairings = []
 
-        pairings = doPair(needsToBePlaintiff, needsToBeDefense)
-        while hasImpermissibles(pairings)
+        proposedPairings = needsToBePlaintiff.zip( needsToBeDefense )
+        while hasImpermissibles(proposedPairings)
           #fix impermissibles
-          impermissible_index = hasImpermissibles(doPair(needsToBePlaintiff, needsToBeDefense))
+          impermissible_index = hasImpermissibles(needsToBePlaintiff.zip( needsToBeDefense))
           #find neighboring team with least-different record; if >1: neighboring team with least-different CS; if >1 (or round 2), neighboring team with least diff point differential
           @pairing_log << ("Found impermissible: " + needsToBePlaintiff[impermissible_index].team.amtaid + " cannot face " + needsToBeDefense[impermissible_index])
 
@@ -172,12 +175,26 @@ class Round < ActiveRecord::Base
           end
           pairerslist << switch_set
           @pairing_log << ("Switched two teams: " + impermissible_team.team.school + " " +impermissible_team.team.teamabcd + " and " + team_to_be_switched.team.school + " " + team_to_be_switched.team.teamabcd )
-          pairings = doPair(needsToBePlaintiff, needsToBeDefense)
+          proposedPairings = needsToBePlaintiff.zip( needsToBeDefense)
         end
         
-        #TODO move the pairings elements to Team from Aff/Neg
-        pairings #TODO: Save, etc.
-
+        puts proposedPairings.inspect
+        pairings.each_with_index do |pairing, index| #TODO: Redo this to use a common scheme to translate pairings array into actual pairings
+          pairing.round = round
+          aff = pairing.affs.build
+          neg = pairing.negs.build
+          aff.team = proposedPairings[index][0].team
+          neg.team = proposedPairings[index][1].team
+          pairing.affs << aff
+          pairing.negs << neg
+          if aff.save and neg.save
+            @pairing_log << "Automatically paired #{aff.amtaid} vs. #{neg.amtaid}."
+          end
+          if tournament.rooms && pairings.size <= tournament.rooms.size
+            #assign the rooms
+          end
+          pairing.save
+        end
       elsif round_index == 3
         pairings = []
       elsif round_index == 4
@@ -186,6 +203,6 @@ class Round < ActiveRecord::Base
     #else if type == "WTFQ"
       
     end
-    return true unless false #TODO: unless things failed above
+    return true #TODO: unless things failed above
   end
 end

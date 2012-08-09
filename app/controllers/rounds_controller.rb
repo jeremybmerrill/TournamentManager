@@ -90,7 +90,7 @@ class RoundsController < ApplicationController
     if @round.tournament.user == current_user
       if @round.autopair(tournament.type_of_competition, @round)
         respond_to do |format|
-          format.html { redirect_to([tournament, @round], :notice => 'Pairings successfully generated!.') }
+          format.html { redirect_to([tournament, @round], :notice => 'Pairings successfully generated!') }
         end
       else
         respond_to do |format|

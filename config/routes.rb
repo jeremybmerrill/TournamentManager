@@ -10,6 +10,8 @@ TournamentManager::Application.routes.draw do
   resources :participants
   
   resources :admin_dashboard
+  
+  resources :contact
 
   resources :tournaments do
     resources :rounds do
@@ -25,6 +27,12 @@ TournamentManager::Application.routes.draw do
   resources :teams do
   member do
     post 'addToTournament'
+  end
+end
+
+resources :teams do
+  member do
+    post 'removeFromTournament'
   end
 end
 

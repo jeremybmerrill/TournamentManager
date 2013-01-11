@@ -1,0 +1,199 @@
+/* Original CSS - not called */
+/* Layout */
+
+body{
+  background-image: url(http://jacinthsohi.com/images/tmbackground.png);
+  margin: 0;
+  padding: 0;
+}
+div#topbar{
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  background-color: #900;
+  z-index: 2;
+}
+div#usernav{
+  width: 800px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 30px;
+  overflow: hide;
+  clear: float;
+  padding: 3px 0px;
+}
+span#logo{
+  float: left;
+}
+span#sign_in{
+  float: right;
+}
+div#container{
+  padding: 15px 30px;  
+  padding-top: 105px; /* 50 pix for fixed topbar, 40 for nav, 15 pix for spacing */
+  background-color: white;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 100%;
+  min-height: 800px;
+}
+
+
+
+
+/* Text styling */
+form span.example{
+  color: gray;
+}
+span.identifier{
+  font-weight: bold;
+}
+div#usernav{
+  color: white;
+}
+div#usernav a, div#usernav a:visited{
+  color: white;
+}
+span#logo{
+  font-size: 24px;
+}
+span#logo a{
+  text-decoration: none;
+}
+
+ /* ballot styles & positioning*/
+form.new_amta_ballot{
+  width: 100%;
+  position: relative;
+}
+form.new_amta_ballot .holder{
+  width: 80%;
+  position: relative;
+  height: 30px;
+}
+form.new_amta_ballot div.holder.witness{
+  height: 90px;
+  margin: 15px 0px;
+}
+form.new_amta_ballot .holder div.field{
+  width: 30%;
+}
+form.new_amta_ballot div.p{
+  left: 10%;
+  position: absolute;
+}
+form.new_amta_ballot div.d{
+  left: 60%;
+  position: absolute;
+}
+form.new_amta_ballot div.witnessdx{
+  top: 35%
+}
+form.new_amta_ballot div.witnesscx{
+  top: 70%
+}
+form.new_amta_ballot div#ranks{
+  height: 120px;
+}
+form.new_amta_ballot div.attyrank{
+  left: 10%;
+  position: absolute;
+}
+form.new_amta_ballot div.witrank{
+  left: 60%;
+  position: absolute;
+}
+form.new_amta_ballot span.attyrank_label{ top: 0%; }
+form.new_amta_ballot span.witrank_label{ top: 0%; }
+form.new_amta_ballot div.attyrank_1{ top: 20%; }
+form.new_amta_ballot div.witrank_1{ top: 20%; }
+form.new_amta_ballot div.attyrank_2{ top: 40%; }
+form.new_amta_ballot div.witrank_2{ top: 40%; }
+form.new_amta_ballot div.attyrank_3{ top: 60%; }
+form.new_amta_ballot div.witrank_3{ top: 60%; }
+form.new_amta_ballot div.attyrank_4{ top: 80%; }
+form.new_amta_ballot div.witrank_4{ top: 80%; }
+form.new_amta_ballot div.score input[type="text"] {
+  width: 50px;
+  position: absolute;
+}
+form.new_amta_ballot div.score input[type="text"] {
+  left: 60%;
+}
+
+form.new_amta_ballot div#wit_rank{
+  /* margin-left: 15%; */
+}
+form.new_amta_ballot div.actions{
+  width: 100%;
+  margin-top: 2%;
+  margin-left: 10%;
+}
+form.new_amta_ballot .failbox{
+  border-style: inset;
+  border-color: red;
+  border-width: 2px;
+}
+
+/* Old scaffolding CSS */
+
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+

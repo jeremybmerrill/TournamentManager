@@ -1,5 +1,5 @@
 source :rubygems
-gem "rails", "3.0.19"
+gem "rails", "3.0.20"
 gem "rack"
 gem "devise"
 
